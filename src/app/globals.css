@@ -1,0 +1,55 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-background text-ink antialiased;
+  }
+
+  body {
+    @apply font-ui font-light;
+  }
+
+  :focus-visible {
+    outline: none;
+  }
+}
+
+@layer utilities {
+  .shimmer {
+    background-image: linear-gradient(
+      90deg,
+      theme("colors.shimmer.from"),
+      theme("colors.shimmer.to"),
+      theme("colors.shimmer.from")
+    );
+    background-size: 200% 100%;
+    @apply animate-shimmer;
+  }
+
+  .hero-overlay-home {
+    background-image: linear-gradient(
+      90deg,
+      theme("colors.overlay.78"),
+      theme("colors.overlay.50") 48%,
+      theme("colors.overlay.12")
+    );
+  }
+
+  .hero-overlay-mobile {
+    background-image: linear-gradient(
+      180deg,
+      theme("colors.overlay.10"),
+      theme("colors.overlay.78")
+    );
+  }
+
+  .hero-overlay-menu {
+    background-image: linear-gradient(
+      180deg,
+      theme("colors.overlay.15"),
+      theme("colors.overlay.65")
+    );
+  }
+}

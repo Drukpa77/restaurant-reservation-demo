@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300" preserveAspectRatio="xMidYMid slice">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2B3623"/><stop offset="1" stop-color="#8E4426"/></linearGradient></defs>
+  <rect width="100%" height="100%" fill="url(#g)"/>
+  <text x="40" y="264" fill="#E3C9A8" font-family="Georgia, serif" font-size="18">TODO: Lamb shoulder</text>
+</svg>

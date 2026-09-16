@@ -1,0 +1,144 @@
+[
+  {
+    "id": "flatbread",
+    "name": "Wood-Fired Flatbread",
+    "price": 14,
+    "description": "Cultured butter, wild oregano, sea salt.",
+    "category": "starters",
+    "dietary": ["V"],
+    "image": "/placeholders/dish-bread.svg",
+    "imageCaption": "TODO: wood-fired flatbread, overhead on linen"
+  },
+  {
+    "id": "sardines",
+    "name": "Sardines on Toast",
+    "price": 19,
+    "description": "Grilled sardines, tomato, capers and lemon oil.",
+    "category": "starters",
+    "dietary": [],
+    "image": "/placeholders/dish-sardines.svg",
+    "imageCaption": "TODO: sardines on toast, close-up"
+  },
+  {
+    "id": "burrata",
+    "name": "Burrata & Peaches",
+    "price": 22,
+    "description": "Grilled stone fruit, basil, aged balsamic.",
+    "category": "starters",
+    "dietary": ["V", "GF"],
+    "image": "/placeholders/dish-burrata.svg",
+    "imageCaption": "TODO: burrata and grilled peaches"
+  },
+  {
+    "id": "squid",
+    "name": "Salt & Pepper Squid",
+    "price": 21,
+    "description": "Lemon aioli, chilli, herbs from the back garden.",
+    "category": "starters",
+    "dietary": ["GF"],
+    "image": "/placeholders/dish-squid.svg",
+    "imageCaption": "TODO: salt and pepper squid"
+  },
+  {
+    "id": "chicken",
+    "name": "Chargrilled Chicken",
+    "price": 32,
+    "description": "Herb-marinated chicken, roast seasonal vegetables and rosemary jus.",
+    "category": "mains",
+    "dietary": ["GF"],
+    "image": "/placeholders/dish-chicken.svg",
+    "imageCaption": "TODO: chargrilled chicken with roast vegetables"
+  },
+  {
+    "id": "fish",
+    "name": "Market Fish",
+    "price": 38,
+    "description": "Whole fish over coals, preserved lemon butter and charred greens.",
+    "category": "mains",
+    "dietary": ["GF"],
+    "image": "/placeholders/dish-fish.svg",
+    "imageCaption": "TODO: coal-roasted market fish"
+  },
+  {
+    "id": "lamb",
+    "name": "Lamb Shoulder",
+    "price": 46,
+    "description": "Six hours over embers, labneh, pickled onion. For two to share.",
+    "category": "mains",
+    "dietary": [],
+    "image": "/placeholders/dish-lamb.svg",
+    "imageCaption": "TODO: lamb shoulder on the coals",
+    "chefPick": true,
+    "forTwo": true
+  },
+  {
+    "id": "risotto",
+    "name": "Mushroom Risotto",
+    "price": 29,
+    "description": "Carnaroli rice, wild mushrooms, aged pecorino and thyme oil.",
+    "category": "vegetarian",
+    "dietary": ["V", "GF"],
+    "image": "/placeholders/dish-risotto.svg",
+    "imageCaption": "TODO: wild mushroom risotto"
+  },
+  {
+    "id": "cauliflower",
+    "name": "Coal-Roast Cauliflower",
+    "price": 26,
+    "description": "Whole cauliflower, tahini, pomegranate and toasted seeds.",
+    "category": "vegetarian",
+    "dietary": ["VG", "GF"],
+    "image": "/placeholders/dish-cauliflower.svg",
+    "imageCaption": "TODO: coal-roast cauliflower"
+  },
+  {
+    "id": "cake",
+    "name": "Olive Oil Cake",
+    "price": 15,
+    "description": "Citrus, yoghurt cream, candied rind.",
+    "category": "desserts",
+    "dietary": ["V"],
+    "image": "/placeholders/dish-cake.svg",
+    "imageCaption": "TODO: olive oil cake slice"
+  },
+  {
+    "id": "pudding",
+    "name": "Sticky Date Pudding",
+    "price": 16,
+    "description": "Butterscotch, burnt-honey ice cream.",
+    "category": "desserts",
+    "dietary": ["V"],
+    "image": "/placeholders/dish-pudding.svg",
+    "imageCaption": "TODO: sticky date pudding"
+  },
+  {
+    "id": "affogato",
+    "name": "Affogato, House Amaro",
+    "price": 18,
+    "description": "Vanilla gelato, espresso, amaro pour.",
+    "category": "desserts",
+    "dietary": ["V", "GF"],
+    "image": "/placeholders/dish-affogato.svg",
+    "imageCaption": "TODO: affogato with house amaro"
+  },
+  {
+    "id": "vermouth",
+    "name": "House Vermouth & Soda",
+    "price": 14,
+    "description": "Citrus peel, native botanicals.",
+    "category": "drinks",
+    "dietary": ["VG"],
+    "image": "/placeholders/dish-drink.svg",
+    "imageCaption": "TODO: vermouth and soda"
+  },
+  {
+    "id": "wine-red",
+    "name": "Yarra Pinot Noir",
+    "price": 16,
+    "description": "Glass. Low-intervention, cool-climate fruit.",
+    "category": "drinks",
+    "dietary": ["VG"],
+    "image": "/placeholders/dish-wine.svg",
+    "imageCaption": "TODO: pinot noir in stemware"
+  }
+]

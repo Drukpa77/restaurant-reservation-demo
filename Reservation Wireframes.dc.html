@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&family=Helvetica&display=swap" rel="stylesheet"><style>body{margin:0;background:#f0eee9;font-family:Helvetica,Arial,sans-serif}a{color:#2a78d6}a:hover{color:#1b5bab}.dv-turn{padding:40px 44px 32px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 20px}.dv-tid{font:600 10px ui-monospace,Menlo,monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}.dv-tname{font:600 13px/1.2 Helvetica,sans-serif;color:#1a1a1a}.dv-opts{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start}.dv-opt{flex:none;display:flex;flex-direction:column;gap:9px;scroll-margin-top:16px}.dv-oid{font:600 10.5px ui-monospace,Menlo,monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 Helvetica,sans-serif;color:rgba(0,0,0,.55)}.dv-card{max-width:100%;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}.dv-next{margin:22px 0 0;font:12px/1.5 Helvetica,sans-serif;color:rgba(0,0,0,.5)}</style></helmet>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">Restaurant reservation — wireframe directions</span></div>
+<div class="dv-opts">
+
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Full-page stepper — desktop, complete flow + states</div>
+<div class="dv-card" style="width:2380px;padding:28px;background:#faf9f7">
+
+<div style="display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start">
+
+<div style="width:1080px;border:2px solid #222;border-radius:10px;background:#fff;overflow:hidden">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 12px;background:#222;color:#fff;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.06em">00 · USER FLOWS<span style="opacity:.6">handoff map</span></div>
+<div style="padding:26px 24px 30px">
+<div style="font:700 28px Caveat,cursive;margin-bottom:14px">Standard reservation (≤10 guests)</div>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;font:500 13px 'IBM Plex Mono',monospace">
+<div style="border:2px solid #222;border-radius:6px;padding:10px 14px;background:#f1efea">Home</div><div style="font-size:18px">→</div>
+<div style="border:2px solid #222;border-radius:6px;padding:10px 14px">1 · Date / Time / Guests</div><div style="font-size:18px">→</div>
+<div style="border:2px solid #222;border-radius:6px;padding:10px 14px">2 · Your details</div><div style="font-size:18px">→</div>
+<div style="border:2px solid #222;border-radius:6px;padding:10px 14px">Review + confirm</div><div style="font-size:18px">→</div>
+<div style="border:2px solid #222;border-radius:6px;padding:10px 14px;background:#222;color:#fff">3 · Confirmation</div>
+</div>
+<div style="height:1px;background:#e2ded6;margin:26px 0"></div>
+<div style="font:700 28px Caveat,cursive;margin-bottom:14px">Large group (&gt;10 guests)</div>
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;font:500 13px 'IBM Plex Mono',monospace">
+<div style="border:2px solid #222;border-radius:6px;padding:10px 14px;background:#f1efea">Home</div><div style="font-size:18px">→</div>
+<div style="border:2px dashed #b4442a;border-radius:6px;padding:10px 14px;color:#b4442a">Group notice</div><div style="font-size:18px">→</div>
+<div style="border:2px solid #222;border-radius:6px;padding:10px 14px">1 · Reservation</div><div style="font-size:18px">→</div>
+<div style="border:2px solid #222;border-radius:6px;padding:10px 14px">2 · Pre-order</div><div style="font-size:18px">→</div>
+<div style="border:2px solid #222;border-radius:6px;padding:10px 14px">3 · Details</div><div style="font-size:18px">→</div>
+<div style="border:2px solid #222;border-radius:6px;padding:10px 14px;background:#222;color:#fff">4 · Confirmation</div>
+</div>
+<div style="margin-top:18px;font:400 13px/1.6 'IBM Plex Mono',monospace;color:#b4442a">Menu is reachable at any point without losing booking state — booking draft persists, user returns to the step they left.</div>
+</div>
+</div>
+
+<div style="width:1080px;border:2px solid #222;border-radius:10px;background:#fff;overflow:hidden">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 12px;background:#222;color:#fff;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.06em">01 · HOME<span style="opacity:.6">1440 desktop</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:2px solid #222">
+<div style="display:flex;align-items:center;gap:10px"><div style="width:30px;height:30px;border:2px solid #222;border-radius:50%"></div><div style="font:700 22px Caveat,cursive">Restaurant Name</div></div>
+<div style="display:flex;align-items:center;gap:22px;font:500 13px 'IBM Plex Mono',monospace">
+<span>Home</span><span style="color:#777">Menu</span><span style="color:#777">Contact</span>
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:6px;padding:9px 16px">Book a Table</div>
+</div>
+</div>
+<div style="position:relative;height:300px;background-image:repeating-linear-gradient(45deg,#eceae4 0 10px,#f7f6f3 10px 20px);border-bottom:2px solid #222;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center">
+<div style="position:absolute;top:10px;left:14px;font:500 11px 'IBM Plex Mono',monospace;color:#8a857a">[ hero image — dining room, wide ]</div>
+<div style="font:700 44px/1.1 Caveat,cursive;max-width:640px">Good Food. Great Company.<br>Your Table Awaits.</div>
+<div style="font:400 14px Helvetica,sans-serif;color:#555">Reserve your table in just a few clicks.</div>
+<div style="display:flex;gap:12px;margin-top:4px;font:500 13px 'IBM Plex Mono',monospace">
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:6px;padding:11px 20px">Book a Table</div>
+<div style="border:2px solid #222;background:#fff;border-radius:6px;padding:11px 20px">View Menu</div>
+</div>
+</div>
+<div style="padding:0 24px;margin-top:-42px;position:relative">
+<div style="border:3px solid #222;border-radius:10px;background:#fff;box-shadow:6px 6px 0 rgba(34,34,34,.12);padding:20px">
+<div style="font:700 26px Caveat,cursive;margin-bottom:14px">Find a table</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:14px;align-items:end">
+<div><div style="font:500 11px 'IBM Plex Mono',monospace;color:#777;margin-bottom:6px">DATE</div><div style="border:2px solid #222;border-radius:6px;padding:13px 14px;display:flex;justify-content:space-between;font:400 14px Helvetica,sans-serif">Sat 24 Oct <span>▢</span></div></div>
+<div><div style="font:500 11px 'IBM Plex Mono',monospace;color:#777;margin-bottom:6px">TIME</div><div style="border:2px solid #222;border-radius:6px;padding:13px 14px;display:flex;justify-content:space-between;font:400 14px Helvetica,sans-serif">7:00 PM <span>▾</span></div></div>
+<div><div style="font:500 11px 'IBM Plex Mono',monospace;color:#777;margin-bottom:6px">GUESTS</div><div style="border:2px solid #222;border-radius:6px;padding:13px 14px;display:flex;justify-content:space-between;font:400 14px Helvetica,sans-serif">4 Guests <span>▾</span></div></div>
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:6px;padding:14px 26px;font:500 13px 'IBM Plex Mono',monospace">Find a Table</div>
+</div>
+<div style="margin-top:12px;font:400 12px 'IBM Plex Mono',monospace;color:#b4442a">Guests dropdown ends with “More than 10” → triggers group notice (frame 04).</div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;padding:44px 24px 0;align-items:center">
+<div style="height:180px;background-image:repeating-linear-gradient(45deg,#eceae4 0 10px,#f7f6f3 10px 20px);border:2px solid #222;border-radius:8px;display:flex;align-items:center;justify-content:center;font:500 11px 'IBM Plex Mono',monospace;color:#8a857a">[ interior / chef image ]</div>
+<div>
+<div style="font:700 28px Caveat,cursive;margin-bottom:10px">About the restaurant</div>
+<div style="height:10px;background:#e8e5df;border-radius:5px;margin-bottom:8px"></div>
+<div style="height:10px;background:#e8e5df;border-radius:5px;margin-bottom:8px"></div>
+<div style="height:10px;background:#e8e5df;border-radius:5px;width:70%"></div>
+</div>
+</div>
+<div style="padding:40px 24px 0">
+<div style="font:700 28px Caveat,cursive;margin-bottom:14px">Popular dishes</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+<sc-for list="{{ popular }}" as="d" hint-placeholder-count="4">
+<div style="border:2px solid #222;border-radius:8px;overflow:hidden">
+<div style="height:96px;background-image:repeating-linear-gradient(45deg,#eceae4 0 10px,#f7f6f3 10px 20px);border-bottom:2px solid #222;display:flex;align-items:center;justify-content:center;font:500 10px 'IBM Plex Mono',monospace;color:#8a857a">[ dish photo ]</div>
+<div style="padding:10px">
+<div style="font:600 14px Helvetica,sans-serif">{{ d.name }}</div>
+<div style="font:400 11px/1.4 Helvetica,sans-serif;color:#777;margin:4px 0 8px">{{ d.desc }}</div>
+<div style="display:flex;justify-content:space-between;font:500 12px 'IBM Plex Mono',monospace"><span>{{ d.price }}</span><span style="color:#777">{{ d.tags }}</span></div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;padding:40px 24px 0">
+<div style="border:2px solid #222;border-radius:8px;padding:16px">
+<div style="font:700 22px Caveat,cursive;margin-bottom:10px">Opening hours</div>
+<div style="font:400 13px/1.9 Helvetica,sans-serif">Mon – Thu · 5:00 PM – 10:00 PM<br>Fri – Sun · 12:00 PM – 11:00 PM</div>
+</div>
+<div style="border:2px solid #222;border-radius:8px;padding:16px">
+<div style="font:700 22px Caveat,cursive;margin-bottom:10px">Location</div>
+<div style="height:70px;background-image:repeating-linear-gradient(45deg,#eceae4 0 10px,#f7f6f3 10px 20px);border:2px solid #222;border-radius:6px;display:flex;align-items:center;justify-content:center;font:500 10px 'IBM Plex Mono',monospace;color:#8a857a">[ map placeholder ]</div>
+<div style="font:400 13px/1.6 Helvetica,sans-serif;margin-top:8px">12 Example Street, Suburb</div>
+</div>
+<div style="border:2px solid #222;border-radius:8px;padding:16px">
+<div style="font:700 22px Caveat,cursive;margin-bottom:10px">Contact</div>
+<div style="font:400 13px/1.9 Helvetica,sans-serif">(00) 1234 5678<br>hello@restaurant.example</div>
+</div>
+</div>
+<div style="margin:36px 0 0;border-top:2px solid #222;padding:22px 24px;display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:20px;background:#f7f6f3">
+<div>
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><div style="width:24px;height:24px;border:2px solid #222;border-radius:50%"></div><div style="font:700 18px Caveat,cursive">Restaurant Name</div></div>
+<div style="display:flex;gap:8px">
+<div style="width:22px;height:22px;border:2px solid #222;border-radius:50%"></div><div style="width:22px;height:22px;border:2px solid #222;border-radius:50%"></div><div style="width:22px;height:22px;border:2px solid #222;border-radius:50%"></div>
+</div>
+</div>
+<div style="font:400 12px/2 'IBM Plex Mono',monospace;color:#555">Home<br>Menu<br>Book a Table<br>Contact</div>
+<div style="font:400 12px/2 'IBM Plex Mono',monospace;color:#555">Mon–Thu 5–10 PM<br>Fri–Sun 12–11 PM<br>12 Example Street</div>
+<div style="font:400 12px/2 'IBM Plex Mono',monospace;color:#555">(00) 1234 5678<br>hello@restaurant.example<br>Privacy Policy<br>Reservation Policy</div>
+</div>
+</div>
+
+<div style="width:1080px;border:2px solid #222;border-radius:10px;background:#fff;overflow:hidden">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 12px;background:#222;color:#fff;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.06em">02 · STEP 1 — DATE, TIME, GUESTS<span style="opacity:.6">standard booking</span></div>
+<div style="padding:24px">
+<div style="display:flex;align-items:center;gap:12px;font:500 12px 'IBM Plex Mono',monospace;margin-bottom:24px">
+<span style="border:2px solid #222;background:#222;color:#fff;border-radius:20px;padding:6px 14px">1 · Select Table</span><span style="color:#aaa">———</span>
+<span style="border:2px solid #ccc;color:#999;border-radius:20px;padding:6px 14px">2 · Your Details</span><span style="color:#aaa">———</span>
+<span style="border:2px solid #ccc;color:#999;border-radius:20px;padding:6px 14px">3 · Confirmation</span>
+</div>
+<div style="display:grid;grid-template-columns:1.1fr 1fr;gap:28px">
+<div>
+<div style="font:700 24px Caveat,cursive;margin-bottom:10px">How many guests?</div>
+<div style="display:flex;align-items:center;gap:18px;border:2px solid #222;border-radius:8px;padding:12px 18px;width:fit-content;font:500 16px 'IBM Plex Mono',monospace">
+<span style="width:30px;height:30px;border:2px solid #222;border-radius:6px;display:flex;align-items:center;justify-content:center">–</span>
+4 Guests
+<span style="width:30px;height:30px;border:2px solid #222;border-radius:6px;display:flex;align-items:center;justify-content:center;background:#222;color:#fff">+</span>
+</div>
+<div style="font:700 24px Caveat,cursive;margin:22px 0 10px">Pick a date</div>
+<div style="border:2px solid #222;border-radius:8px;padding:14px;width:330px">
+<div style="display:flex;justify-content:space-between;align-items:center;font:500 13px 'IBM Plex Mono',monospace;margin-bottom:10px"><span>‹</span><span>October 2026</span><span>›</span></div>
+<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font:500 10px 'IBM Plex Mono',monospace;color:#999;text-align:center;margin-bottom:4px">
+<div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div><div>S</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px">
+<sc-for list="{{ days }}" as="day" hint-placeholder-count="35">
+<div style="height:34px;display:flex;align-items:center;justify-content:center;border-radius:6px;font:400 13px Helvetica,sans-serif;border:2px solid {{ day.border }};background:{{ day.bg }};color:{{ day.color }}">{{ day.label }}</div>
+</sc-for>
+</div>
+<div style="display:flex;gap:14px;margin-top:12px;font:400 10px 'IBM Plex Mono',monospace;color:#777"><span>▢ available</span><span style="color:#bbb">▢ closed / full</span><span>■ selected</span></div>
+</div>
+</div>
+<div>
+<div style="font:700 24px Caveat,cursive;margin-bottom:10px">Available times · Sat 24 Oct</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">
+<sc-for list="{{ times }}" as="t" hint-placeholder-count="8">
+<div style="border:2px solid {{ t.border }};border-radius:8px;padding:14px 0;text-align:center;font:500 14px 'IBM Plex Mono',monospace;background:{{ t.bg }};color:{{ t.color }};text-decoration:{{ t.strike }}">{{ t.label }}</div>
+</sc-for>
+</div>
+<div style="font:400 12px 'IBM Plex Mono',monospace;color:#777;margin-top:10px">Disabled = fully booked. Selection required before Continue enables.</div>
+<div style="border:2px solid #222;border-radius:8px;padding:14px;margin-top:22px;background:#f7f6f3">
+<div style="font:600 13px 'IBM Plex Mono',monospace;margin-bottom:8px">Your selection</div>
+<div style="font:400 13px/1.8 Helvetica,sans-serif">Saturday, 24 October · 7:00 PM · 4 Guests</div>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:22px;font:500 13px 'IBM Plex Mono',monospace">
+<span style="color:#777">‹ Back</span>
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:6px;padding:13px 28px">Continue</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="width:520px;border:2px solid #222;border-radius:10px;background:#fff;overflow:hidden">
+<div style="padding:7px 12px;background:#b4442a;color:#fff;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.06em">03 · STATE — NO AVAILABILITY</div>
+<div style="padding:22px">
+<div style="border:2px dashed #b4442a;border-radius:8px;padding:16px;background:#fdf4f1">
+<div style="font:600 14px Helvetica,sans-serif;margin-bottom:6px">Sorry, there are no tables available at this time.</div>
+<div style="font:400 13px Helvetica,sans-serif;color:#555">Here are the closest available times:</div>
+<div style="display:flex;gap:10px;margin-top:12px">
+<div style="border:2px solid #222;border-radius:8px;padding:12px 16px;font:500 13px 'IBM Plex Mono',monospace">6:30 PM</div>
+<div style="border:2px solid #222;border-radius:8px;padding:12px 16px;font:500 13px 'IBM Plex Mono',monospace">7:30 PM</div>
+<div style="border:2px solid #222;border-radius:8px;padding:12px 16px;font:500 13px 'IBM Plex Mono',monospace">8:00 PM</div>
+</div>
+</div>
+<div style="font:400 12px 'IBM Plex Mono',monospace;color:#777;margin-top:14px">Also offer: “Try another date” link, and join-waitlist as a later enhancement.</div>
+</div>
+</div>
+
+<div style="width:520px;border:2px solid #222;border-radius:10px;background:#fff;overflow:hidden">
+<div style="padding:7px 12px;background:#b4442a;color:#fff;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.06em">04 · STATE — GROUP BOOKING NOTICE (&gt;10 guests)</div>
+<div style="padding:22px">
+<div style="border:2px solid #222;border-radius:10px;padding:20px;box-shadow:5px 5px 0 rgba(34,34,34,.12)">
+<div style="font:700 26px Caveat,cursive;margin-bottom:8px">Planning a group booking?</div>
+<div style="font:400 13px/1.6 Helvetica,sans-serif;color:#444">For bookings of more than 10 guests, we ask your group to pre-order your meals so our kitchen can prepare for your visit.</div>
+<div style="font:400 13px/1.6 Helvetica,sans-serif;color:#444;margin-top:10px">You can browse the menu now and come straight back — your booking details are saved.</div>
+<div style="display:flex;gap:12px;margin-top:18px;font:500 13px 'IBM Plex Mono',monospace">
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:6px;padding:13px 18px">Continue Group Booking</div>
+<div style="border:2px solid #222;border-radius:6px;padding:13px 18px">View Menu</div>
+</div>
+<div style="font:400 12px 'IBM Plex Mono',monospace;color:#777;margin-top:14px">Final menu selections can be confirmed before your reservation.</div>
+</div>
+<div style="font:400 12px/1.6 'IBM Plex Mono',monospace;color:#b4442a;margin-top:14px">Tone: reassuring, not gated. Progress bar switches to the 4-step group variant on continue.</div>
+</div>
+</div>
+
+<div style="width:1080px;border:2px solid #222;border-radius:10px;background:#fff;overflow:hidden">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 12px;background:#222;color:#fff;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.06em">05 · GROUP PRE-ORDER<span style="opacity:.6">step 2 of 4</span></div>
+<div style="padding:24px">
+<div style="display:flex;align-items:center;gap:10px;font:500 12px 'IBM Plex Mono',monospace;margin-bottom:22px">
+<span style="border:2px solid #222;border-radius:20px;padding:6px 14px">1 · Reservation ✓</span><span style="color:#aaa">——</span>
+<span style="border:2px solid #222;background:#222;color:#fff;border-radius:20px;padding:6px 14px">2 · Pre-order</span><span style="color:#aaa">——</span>
+<span style="border:2px solid #ccc;color:#999;border-radius:20px;padding:6px 14px">3 · Details</span><span style="color:#aaa">——</span>
+<span style="border:2px solid #ccc;color:#999;border-radius:20px;padding:6px 14px">4 · Confirmation</span>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;border:2px solid #222;border-radius:8px;padding:14px 18px;background:#f7f6f3;margin-bottom:20px">
+<div style="font:600 14px 'IBM Plex Mono',monospace">Guests: 14</div>
+<div style="display:flex;align-items:center;gap:14px">
+<div style="font:600 14px 'IBM Plex Mono',monospace">Meals selected: 11 / 14</div>
+<div style="width:220px;height:10px;border:2px solid #222;border-radius:6px;overflow:hidden"><div style="width:78%;height:100%;background:#222"></div></div>
+</div>
+</div>
+<div style="display:flex;gap:10px;margin-bottom:18px;font:500 12px 'IBM Plex Mono',monospace">
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:20px;padding:8px 16px">Starters</div>
+<div style="border:2px solid #222;border-radius:20px;padding:8px 16px">Mains</div>
+<div style="border:2px solid #222;border-radius:20px;padding:8px 16px">Vegetarian</div>
+<div style="border:2px solid #222;border-radius:20px;padding:8px 16px">Desserts</div>
+<div style="border:2px solid #222;border-radius:20px;padding:8px 16px">Drinks</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+<sc-for list="{{ dishes }}" as="d" hint-placeholder-count="4">
+<div style="display:flex;gap:14px;border:2px solid #222;border-radius:8px;padding:12px">
+<div style="width:96px;height:96px;flex:none;background-image:repeating-linear-gradient(45deg,#eceae4 0 10px,#f7f6f3 10px 20px);border:2px solid #222;border-radius:6px;display:flex;align-items:center;justify-content:center;font:500 9px 'IBM Plex Mono',monospace;color:#8a857a;text-align:center">[ dish<br>photo ]</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:6px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:600 15px Helvetica,sans-serif">{{ d.name }}</div><div style="font:600 14px 'IBM Plex Mono',monospace">{{ d.price }}</div></div>
+<div style="font:400 12px/1.5 Helvetica,sans-serif;color:#666">{{ d.desc }}</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto">
+<div style="font:500 10px 'IBM Plex Mono',monospace;border:2px solid #222;border-radius:4px;padding:2px 6px">{{ d.tags }}</div>
+<div style="display:flex;align-items:center;gap:12px;font:500 14px 'IBM Plex Mono',monospace">
+<span style="width:26px;height:26px;border:2px solid #222;border-radius:6px;display:flex;align-items:center;justify-content:center">–</span>{{ d.qty }}
+<span style="width:26px;height:26px;border:2px solid #222;border-radius:6px;display:flex;align-items:center;justify-content:center;background:#222;color:#fff">+</span>
+</div>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:22px;font:500 13px 'IBM Plex Mono',monospace">
+<span style="color:#777">‹ Back to reservation</span>
+<div style="display:flex;gap:12px;align-items:center">
+<span style="text-decoration:underline">Skip for now — confirm later</span>
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:6px;padding:13px 28px">Continue</div>
+</div>
+</div>
+<div style="font:400 12px 'IBM Plex Mono',monospace;color:#b4442a;margin-top:12px">Organiser picks quantities for the group — no per-guest selection in this prototype.</div>
+</div>
+</div>
+
+<div style="width:1080px;border:2px solid #222;border-radius:10px;background:#fff;overflow:hidden">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 12px;background:#222;color:#fff;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.06em">06 · STEP 2 — YOUR DETAILS + BOOKING SUMMARY<span style="opacity:.6">left: form · right: sticky summary</span></div>
+<div style="padding:24px;display:grid;grid-template-columns:1.5fr 1fr;gap:28px">
+<div>
+<div style="font:700 26px Caveat,cursive;margin-bottom:16px">Your details</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+<div><div style="font:500 11px 'IBM Plex Mono',monospace;color:#777;margin-bottom:6px">FIRST NAME *</div><div style="border:2px solid #222;border-radius:6px;padding:13px;font:400 13px Helvetica,sans-serif">John</div></div>
+<div><div style="font:500 11px 'IBM Plex Mono',monospace;color:#777;margin-bottom:6px">LAST NAME *</div><div style="border:2px solid #222;border-radius:6px;padding:13px;font:400 13px Helvetica,sans-serif">Smith</div></div>
+<div><div style="font:500 11px 'IBM Plex Mono',monospace;color:#777;margin-bottom:6px">EMAIL *</div><div style="border:2px solid #222;border-radius:6px;padding:13px;font:400 13px Helvetica,sans-serif">john@example.com</div></div>
+<div><div style="font:500 11px 'IBM Plex Mono',monospace;color:#b4442a;margin-bottom:6px">MOBILE NUMBER *</div><div style="border:2px solid #b4442a;border-radius:6px;padding:13px;font:400 13px Helvetica,sans-serif;color:#bbb">04__ ___ ___</div><div style="font:400 11px 'IBM Plex Mono',monospace;color:#b4442a;margin-top:5px">Required — we text your confirmation.</div></div>
+</div>
+<div style="margin-top:16px"><div style="font:500 11px 'IBM Plex Mono',monospace;color:#777;margin-bottom:6px">SPECIAL REQUESTS / NOTES</div><div style="border:2px solid #222;border-radius:6px;padding:13px;height:72px;font:400 13px Helvetica,sans-serif;color:#aaa">Birthday celebration, accessibility requirements, dietary requirements, high chair, etc.</div></div>
+<div style="margin-top:16px"><div style="font:500 11px 'IBM Plex Mono',monospace;color:#777;margin-bottom:8px">DIETARY REQUIREMENTS</div>
+<div style="display:flex;flex-wrap:wrap;gap:10px;font:500 12px 'IBM Plex Mono',monospace">
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:20px;padding:8px 14px">None</div>
+<div style="border:2px solid #222;border-radius:20px;padding:8px 14px">Vegetarian</div>
+<div style="border:2px solid #222;border-radius:20px;padding:8px 14px">Vegan</div>
+<div style="border:2px solid #222;border-radius:20px;padding:8px 14px">Gluten Free</div>
+<div style="border:2px solid #222;border-radius:20px;padding:8px 14px">Other</div>
+</div></div>
+<div style="display:flex;gap:10px;align-items:flex-start;margin-top:18px">
+<div style="width:20px;height:20px;border:2px solid #222;border-radius:4px;flex:none"></div>
+<div style="font:400 13px/1.4 Helvetica,sans-serif">I agree to the restaurant’s reservation and cancellation policy.</div>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:22px;font:500 13px 'IBM Plex Mono',monospace">
+<span style="color:#777">‹ Back</span>
+<div style="border:2px solid #bbb;background:#eee;color:#999;border-radius:6px;padding:13px 26px">Confirm Reservation</div>
+</div>
+<div style="font:400 12px/1.6 'IBM Plex Mono',monospace;color:#b4442a;margin-top:12px">Validation: CTA stays disabled until required fields + policy checkbox pass. Inline errors on blur, not on submit.</div>
+</div>
+<div>
+<div style="border:3px solid #222;border-radius:10px;padding:18px;box-shadow:5px 5px 0 rgba(34,34,34,.1)">
+<div style="font:700 24px Caveat,cursive;margin-bottom:12px">Your reservation</div>
+<div style="font:400 14px/2 Helvetica,sans-serif">Saturday, 24 October<br>7:00 PM<br>4 Guests<br>Restaurant Name</div>
+<div style="height:2px;background:#e2ded6;margin:14px 0"></div>
+<div style="font:500 12px 'IBM Plex Mono',monospace;text-decoration:underline">Edit Reservation</div>
+<div style="font:400 11px/1.5 'IBM Plex Mono',monospace;color:#777;margin-top:6px">Returns to step 1 with details preserved.</div>
+</div>
+<div style="border:2px dashed #222;border-radius:10px;padding:18px;margin-top:18px;background:#f7f6f3">
+<div style="font:500 11px 'IBM Plex Mono',monospace;color:#b4442a;margin-bottom:8px">VARIANT · GROUP BOOKING</div>
+<div style="font:700 22px Caveat,cursive;margin-bottom:8px">Group booking</div>
+<div style="font:400 14px/1.9 Helvetica,sans-serif">14 Guests<br>Saturday, 24 October · 7:00 PM<br>Pre-order: 12 meals selected</div>
+<div style="display:flex;flex-direction:column;gap:6px;margin-top:12px;font:500 12px 'IBM Plex Mono',monospace;text-decoration:underline"><span>View / Edit Pre-order</span><span>Edit Reservation</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="width:1080px;border:2px solid #222;border-radius:10px;background:#fff;overflow:hidden">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 12px;background:#222;color:#fff;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.06em">07 · CONFIRMATION<span style="opacity:.6">success state</span></div>
+<div style="padding:34px 24px;display:flex;flex-direction:column;align-items:center;text-align:center">
+<div style="width:74px;height:74px;border:3px solid #222;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 34px Helvetica,sans-serif">✓</div>
+<div style="font:700 38px Caveat,cursive;margin:14px 0 6px">Your Table Is Reserved!</div>
+<div style="font:400 14px Helvetica,sans-serif;color:#555">We look forward to seeing you.</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;width:760px;margin-top:26px;text-align:left">
+<div style="border:2px solid #222;border-radius:10px;padding:18px">
+<div style="font:600 12px 'IBM Plex Mono',monospace;color:#777;margin-bottom:10px">RESERVATION DETAILS</div>
+<div style="font:400 14px/2 Helvetica,sans-serif">Booking reference: #RES1048<br>Date: Saturday, 24 October<br>Time: 7:00 PM<br>Guests: 4<br>Name: John Smith</div>
+</div>
+<div style="border:2px dashed #222;border-radius:10px;padding:18px;background:#f7f6f3">
+<div style="font:500 11px 'IBM Plex Mono',monospace;color:#b4442a;margin-bottom:10px">VARIANT · GROUP BOOKING</div>
+<div style="font:400 14px/2 Helvetica,sans-serif">Group booking · 14 Guests<br>Pre-order: 12 meals selected</div>
+<div style="border:2px solid #222;border-radius:6px;padding:11px 14px;margin-top:12px;width:fit-content;font:500 12px 'IBM Plex Mono',monospace">Manage Group Pre-order</div>
+<div style="font:400 11px/1.5 'IBM Plex Mono',monospace;color:#777;margin-top:8px">Editable until 48h before the booking.</div>
+</div>
+</div>
+<div style="display:flex;gap:12px;margin-top:24px;font:500 13px 'IBM Plex Mono',monospace">
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:6px;padding:13px 18px">Add to Calendar</div>
+<div style="border:2px solid #222;border-radius:6px;padding:13px 18px">View Reservation</div>
+<div style="border:2px solid #222;border-radius:6px;padding:13px 18px">View Menu</div>
+<div style="border:2px solid #222;border-radius:6px;padding:13px 18px">Back to Home</div>
+</div>
+<div style="font:400 12px 'IBM Plex Mono',monospace;color:#777;margin-top:16px">Confirmation also sent by email + SMS. Reference is the key to manage/cancel.</div>
+</div>
+</div>
+
+<div style="width:1080px;border:2px solid #222;border-radius:10px;background:#fff;overflow:hidden">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:7px 12px;background:#222;color:#fff;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.06em">08 · MENU PAGE<span style="opacity:.6">browsable without booking</span></div>
+<div style="display:flex;align-items:center;justify-content:space-between;padding:14px 24px;border-bottom:2px solid #222">
+<div style="display:flex;align-items:center;gap:10px"><div style="width:30px;height:30px;border:2px solid #222;border-radius:50%"></div><div style="font:700 22px Caveat,cursive">Restaurant Name</div></div>
+<div style="display:flex;align-items:center;gap:22px;font:500 13px 'IBM Plex Mono',monospace"><span style="color:#777">Home</span><span>Menu</span><span style="color:#777">Contact</span><div style="border:2px solid #222;background:#222;color:#fff;border-radius:6px;padding:9px 16px">Book a Table</div></div>
+</div>
+<div style="padding:24px">
+<div style="font:700 32px Caveat,cursive;margin-bottom:14px">Our menu</div>
+<div style="display:flex;gap:10px;border-bottom:2px solid #222;padding-bottom:12px;margin-bottom:18px;font:500 12px 'IBM Plex Mono',monospace">
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:20px;padding:8px 16px">All</div>
+<div style="border:2px solid #222;border-radius:20px;padding:8px 16px">Starters</div>
+<div style="border:2px solid #222;border-radius:20px;padding:8px 16px">Mains</div>
+<div style="border:2px solid #222;border-radius:20px;padding:8px 16px">Vegetarian</div>
+<div style="border:2px solid #222;border-radius:20px;padding:8px 16px">Desserts</div>
+<div style="border:2px solid #222;border-radius:20px;padding:8px 16px">Drinks</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+<sc-for list="{{ menu }}" as="m" hint-placeholder-count="6">
+<div style="border:2px solid #222;border-radius:8px;overflow:hidden">
+<div style="height:120px;background-image:repeating-linear-gradient(45deg,#eceae4 0 10px,#f7f6f3 10px 20px);border-bottom:2px solid #222;display:flex;align-items:center;justify-content:center;font:500 10px 'IBM Plex Mono',monospace;color:#8a857a">[ dish photo ]</div>
+<div style="padding:12px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:600 15px Helvetica,sans-serif">{{ m.name }}</div><div style="font:600 14px 'IBM Plex Mono',monospace">{{ m.price }}</div></div>
+<div style="font:400 12px/1.5 Helvetica,sans-serif;color:#666;margin:6px 0 10px">{{ m.desc }}</div>
+<div style="font:500 10px 'IBM Plex Mono',monospace;border:2px solid #222;border-radius:4px;padding:2px 6px;width:fit-content">{{ m.tags }}</div>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;border:3px solid #222;border-radius:10px;padding:14px 18px;margin-top:22px;background:#f7f6f3;box-shadow:0 -4px 0 rgba(34,34,34,.06)">
+<div><div style="font:600 14px Helvetica,sans-serif">Ready to eat with us?</div><div style="font:400 12px 'IBM Plex Mono',monospace;color:#777">Sticky bar — pinned to viewport bottom on scroll</div></div>
+<div style="display:flex;gap:10px;font:500 13px 'IBM Plex Mono',monospace">
+<div style="border:2px solid #222;border-radius:6px;padding:12px 16px">Back to booking</div>
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:6px;padding:12px 20px">Book a Table</div>
+</div>
+</div>
+<div style="font:400 12px 'IBM Plex Mono',monospace;color:#777;margin-top:12px">Dietary key: V = Vegetarian · VG = Vegan · GF = Gluten Free</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>One-page booking sheet — booking never leaves the homepage (2 steps)</div>
+<div class="dv-card" style="width:1180px;padding:28px;background:#faf9f7">
+<div style="display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start">
+
+<div style="width:1080px;border:2px solid #222;border-radius:10px;background:#fff;overflow:hidden;position:relative">
+<div style="padding:7px 12px;background:#222;color:#fff;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.06em">B1 · HOME + SLIDE-OVER SHEET (step 1)</div>
+<div style="display:flex">
+<div style="flex:1;padding:20px;opacity:.35">
+<div style="display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid #222;padding-bottom:12px"><div style="font:700 20px Caveat,cursive">Restaurant Name</div><div style="font:500 12px 'IBM Plex Mono',monospace">Home · Menu · Contact</div></div>
+<div style="height:200px;background-image:repeating-linear-gradient(45deg,#eceae4 0 10px,#f7f6f3 10px 20px);border:2px solid #222;border-radius:8px;margin-top:16px;display:flex;align-items:center;justify-content:center;font:700 28px Caveat,cursive;text-align:center">Good Food. Great Company.<br>Your Table Awaits.</div>
+<div style="height:10px;background:#e8e5df;border-radius:5px;margin:18px 0 8px"></div><div style="height:10px;background:#e8e5df;border-radius:5px;width:60%"></div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px"><div style="height:90px;border:2px solid #222;border-radius:8px"></div><div style="height:90px;border:2px solid #222;border-radius:8px"></div><div style="height:90px;border:2px solid #222;border-radius:8px"></div></div>
+</div>
+<div style="width:420px;flex:none;border-left:3px solid #222;padding:20px;background:#fff;box-shadow:-8px 0 0 rgba(34,34,34,.08)">
+<div style="display:flex;justify-content:space-between;align-items:center"><div style="font:700 26px Caveat,cursive">Book a table</div><div style="font:500 16px 'IBM Plex Mono',monospace">✕</div></div>
+<div style="display:flex;gap:6px;margin:14px 0 18px"><div style="flex:1;height:6px;background:#222;border-radius:4px"></div><div style="flex:1;height:6px;background:#ddd;border-radius:4px"></div></div>
+<div style="font:500 11px 'IBM Plex Mono',monospace;color:#777;margin-bottom:8px">GUESTS</div>
+<div style="display:flex;align-items:center;justify-content:space-between;border:2px solid #222;border-radius:8px;padding:12px 16px;font:500 15px 'IBM Plex Mono',monospace"><span style="width:28px;height:28px;border:2px solid #222;border-radius:6px;display:flex;align-items:center;justify-content:center">–</span>4 Guests<span style="width:28px;height:28px;border:2px solid #222;border-radius:6px;display:flex;align-items:center;justify-content:center;background:#222;color:#fff">+</span></div>
+<div style="font:500 11px 'IBM Plex Mono',monospace;color:#777;margin:16px 0 8px">DATE</div>
+<div style="display:flex;gap:8px">
+<div style="flex:1;border:2px solid #222;border-radius:8px;padding:10px 0;text-align:center;font:500 12px 'IBM Plex Mono',monospace">Fri 23</div>
+<div style="flex:1;border:2px solid #222;background:#222;color:#fff;border-radius:8px;padding:10px 0;text-align:center;font:500 12px 'IBM Plex Mono',monospace">Sat 24</div>
+<div style="flex:1;border:2px solid #222;border-radius:8px;padding:10px 0;text-align:center;font:500 12px 'IBM Plex Mono',monospace">Sun 25</div>
+<div style="flex:none;border:2px solid #222;border-radius:8px;padding:10px 12px;font:500 12px 'IBM Plex Mono',monospace">▢</div>
+</div>
+<div style="font:500 11px 'IBM Plex Mono',monospace;color:#777;margin:16px 0 8px">TIME</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+<sc-for list="{{ times }}" as="t" hint-placeholder-count="8">
+<div style="border:2px solid {{ t.border }};border-radius:8px;padding:11px 0;text-align:center;font:500 12px 'IBM Plex Mono',monospace;background:{{ t.bg }};color:{{ t.color }};text-decoration:{{ t.strike }}">{{ t.label }}</div>
+</sc-for>
+</div>
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:8px;padding:14px;text-align:center;font:500 13px 'IBM Plex Mono',monospace;margin-top:18px">Continue</div>
+<div style="font:400 11px/1.6 'IBM Plex Mono',monospace;color:#b4442a;margin-top:12px">Everything above the fold, no page change. Deep-linkable at /book.</div>
+</div>
+</div>
+</div>
+
+<div style="width:420px;border:2px solid #222;border-radius:10px;background:#fff;overflow:hidden">
+<div style="padding:7px 12px;background:#222;color:#fff;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.06em">B2 · SHEET (step 2 — details)</div>
+<div style="padding:20px">
+<div style="display:flex;gap:6px;margin-bottom:16px"><div style="flex:1;height:6px;background:#222;border-radius:4px"></div><div style="flex:1;height:6px;background:#222;border-radius:4px"></div></div>
+<div style="border:2px solid #222;border-radius:8px;padding:12px;background:#f7f6f3;display:flex;justify-content:space-between;align-items:center;font:400 13px Helvetica,sans-serif"><span>Sat 24 Oct · 7:00 PM · 4 Guests</span><span style="font:500 11px 'IBM Plex Mono',monospace;text-decoration:underline">Edit</span></div>
+<div style="display:grid;gap:12px;margin-top:16px">
+<div style="border:2px solid #222;border-radius:6px;padding:12px;font:400 13px Helvetica,sans-serif;color:#aaa">First name *</div>
+<div style="border:2px solid #222;border-radius:6px;padding:12px;font:400 13px Helvetica,sans-serif;color:#aaa">Last name *</div>
+<div style="border:2px solid #222;border-radius:6px;padding:12px;font:400 13px Helvetica,sans-serif;color:#aaa">Email *</div>
+<div style="border:2px solid #222;border-radius:6px;padding:12px;font:400 13px Helvetica,sans-serif;color:#aaa">Mobile *</div>
+<div style="border:2px solid #222;border-radius:6px;padding:12px;height:56px;font:400 12px/1.4 Helvetica,sans-serif;color:#aaa">Special requests — birthday, high chair, dietary…</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;font:500 11px 'IBM Plex Mono',monospace">
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:20px;padding:7px 12px">None</div>
+<div style="border:2px solid #222;border-radius:20px;padding:7px 12px">Vegetarian</div>
+<div style="border:2px solid #222;border-radius:20px;padding:7px 12px">Vegan</div>
+<div style="border:2px solid #222;border-radius:20px;padding:7px 12px">GF</div>
+<div style="border:2px solid #222;border-radius:20px;padding:7px 12px">Other</div>
+</div>
+<div style="display:flex;gap:8px;align-items:center;margin-top:14px"><div style="width:18px;height:18px;border:2px solid #222;border-radius:4px;flex:none"></div><div style="font:400 12px/1.4 Helvetica,sans-serif">I agree to the reservation &amp; cancellation policy.</div></div>
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:8px;padding:14px;text-align:center;font:500 13px 'IBM Plex Mono',monospace;margin-top:16px">Confirm Reservation</div>
+</div>
+</div>
+
+<div style="width:420px;border:2px solid #222;border-radius:10px;background:#fff;overflow:hidden">
+<div style="padding:7px 12px;background:#222;color:#fff;font:600 11px 'IBM Plex Mono',monospace;letter-spacing:.06em">B3 · SHEET (confirmed)</div>
+<div style="padding:26px 20px;text-align:center">
+<div style="width:56px;height:56px;border:3px solid #222;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 26px Helvetica,sans-serif;margin:0 auto">✓</div>
+<div style="font:700 30px Caveat,cursive;margin:12px 0 4px">Your Table Is Reserved!</div>
+<div style="font:400 13px Helvetica,sans-serif;color:#555">We look forward to seeing you.</div>
+<div style="border:2px solid #222;border-radius:8px;padding:14px;margin-top:18px;text-align:left;font:400 13px/1.9 Helvetica,sans-serif">#RES1048<br>Saturday, 24 October · 7:00 PM<br>4 Guests · John Smith</div>
+<div style="display:grid;gap:8px;margin-top:14px;font:500 12px 'IBM Plex Mono',monospace">
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:6px;padding:12px">Add to Calendar</div>
+<div style="border:2px solid #222;border-radius:6px;padding:12px">View Menu</div>
+<div style="border:2px solid #222;border-radius:6px;padding:12px">Back to Home</div>
+</div>
+<div style="font:400 11px/1.6 'IBM Plex Mono',monospace;color:#b4442a;margin-top:12px">Group bookings (&gt;10) break out of the sheet into the full-page pre-order flow from <a class="dv-oid" href="#1a">1a</a>.</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Mobile — both journeys, thumb-first</div>
+<div class="dv-card" style="width:1720px;padding:28px;background:#faf9f7">
+<div style="display:flex;flex-wrap:wrap;gap:22px;align-items:flex-start">
+
+<div style="width:360px;border:2px solid #222;border-radius:16px;background:#fff;overflow:hidden">
+<div style="padding:6px 10px;background:#222;color:#fff;font:600 10px 'IBM Plex Mono',monospace">M1 · HOME</div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:2px solid #222">
+<div style="font:700 18px Caveat,cursive">Restaurant Name</div>
+<div style="display:flex;gap:8px;align-items:center"><div style="border:2px solid #222;background:#222;color:#fff;border-radius:6px;padding:7px 10px;font:500 11px 'IBM Plex Mono',monospace">Book</div><div style="font:500 16px 'IBM Plex Mono',monospace">☰</div></div>
+</div>
+<div style="height:170px;background-image:repeating-linear-gradient(45deg,#eceae4 0 10px,#f7f6f3 10px 20px);border-bottom:2px solid #222;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 16px;gap:8px">
+<div style="font:700 26px/1.15 Caveat,cursive">Good Food. Great Company. Your Table Awaits.</div>
+<div style="font:400 11px Helvetica,sans-serif;color:#555">Reserve in just a few clicks.</div>
+</div>
+<div style="padding:14px">
+<div style="border:3px solid #222;border-radius:10px;padding:14px;box-shadow:4px 4px 0 rgba(34,34,34,.12)">
+<div style="font:700 20px Caveat,cursive;margin-bottom:10px">Find a table</div>
+<div style="display:grid;gap:10px;font:400 13px Helvetica,sans-serif">
+<div style="border:2px solid #222;border-radius:8px;padding:14px;display:flex;justify-content:space-between">Sat 24 Oct <span>▢</span></div>
+<div style="border:2px solid #222;border-radius:8px;padding:14px;display:flex;justify-content:space-between">7:00 PM <span>▾</span></div>
+<div style="border:2px solid #222;border-radius:8px;padding:14px;display:flex;justify-content:space-between">4 Guests <span>▾</span></div>
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:8px;padding:15px;text-align:center;font:500 13px 'IBM Plex Mono',monospace">Find a Table</div>
+</div>
+</div>
+<div style="height:10px;background:#e8e5df;border-radius:5px;margin:18px 0 8px"></div>
+<div style="height:10px;background:#e8e5df;border-radius:5px;width:70%"></div>
+<div style="height:110px;background-image:repeating-linear-gradient(45deg,#eceae4 0 10px,#f7f6f3 10px 20px);border:2px solid #222;border-radius:8px;margin-top:14px;display:flex;align-items:center;justify-content:center;font:500 10px 'IBM Plex Mono',monospace;color:#8a857a">[ about image ]</div>
+<div style="font:400 11px 'IBM Plex Mono',monospace;color:#777;margin-top:10px">Then: popular dishes ↓ hours ↓ location ↓ contact ↓ footer</div>
+</div>
+<div style="border-top:2px solid #222;padding:12px 14px;background:#f7f6f3;display:flex;justify-content:space-between;align-items:center">
+<div style="font:400 11px 'IBM Plex Mono',monospace;color:#777">sticky bottom bar</div>
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:6px;padding:10px 16px;font:500 12px 'IBM Plex Mono',monospace">Book a Table</div>
+</div>
+</div>
+
+<div style="width:360px;border:2px solid #222;border-radius:16px;background:#fff;overflow:hidden">
+<div style="padding:6px 10px;background:#222;color:#fff;font:600 10px 'IBM Plex Mono',monospace">M2 · STEP 1</div>
+<div style="padding:14px">
+<div style="display:flex;gap:6px;margin-bottom:6px"><div style="flex:1;height:6px;background:#222;border-radius:4px"></div><div style="flex:1;height:6px;background:#ddd;border-radius:4px"></div><div style="flex:1;height:6px;background:#ddd;border-radius:4px"></div></div>
+<div style="font:500 10px 'IBM Plex Mono',monospace;color:#777;margin-bottom:14px">STEP 1 OF 3 · SELECT TABLE</div>
+<div style="font:700 20px Caveat,cursive;margin-bottom:8px">Guests</div>
+<div style="display:flex;align-items:center;justify-content:space-between;border:2px solid #222;border-radius:10px;padding:14px 18px;font:500 16px 'IBM Plex Mono',monospace"><span style="width:34px;height:34px;border:2px solid #222;border-radius:8px;display:flex;align-items:center;justify-content:center">–</span>4<span style="width:34px;height:34px;border:2px solid #222;border-radius:8px;display:flex;align-items:center;justify-content:center;background:#222;color:#fff">+</span></div>
+<div style="font:700 20px Caveat,cursive;margin:18px 0 8px">Date</div>
+<div style="display:flex;gap:8px;overflow:hidden">
+<div style="flex:none;border:2px solid #222;border-radius:10px;padding:10px 14px;text-align:center;font:500 11px/1.4 'IBM Plex Mono',monospace">Fri<br>23</div>
+<div style="flex:none;border:2px solid #222;background:#222;color:#fff;border-radius:10px;padding:10px 14px;text-align:center;font:500 11px/1.4 'IBM Plex Mono',monospace">Sat<br>24</div>
+<div style="flex:none;border:2px solid #222;border-radius:10px;padding:10px 14px;text-align:center;font:500 11px/1.4 'IBM Plex Mono',monospace">Sun<br>25</div>
+<div style="flex:none;border:2px solid #222;border-radius:10px;padding:10px 14px;text-align:center;font:500 11px/1.4 'IBM Plex Mono',monospace">Mon<br>26</div>
+<div style="flex:none;border:2px dashed #222;border-radius:10px;padding:10px 12px;display:flex;align-items:center;font:500 11px 'IBM Plex Mono',monospace">▢</div>
+</div>
+<div style="font:700 20px Caveat,cursive;margin:18px 0 8px">Time</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px">
+<sc-for list="{{ times }}" as="t" hint-placeholder-count="8">
+<div style="border:2px solid {{ t.border }};border-radius:10px;padding:15px 0;text-align:center;font:500 13px 'IBM Plex Mono',monospace;background:{{ t.bg }};color:{{ t.color }};text-decoration:{{ t.strike }}">{{ t.label }}</div>
+</sc-for>
+</div>
+<div style="font:400 10px 'IBM Plex Mono',monospace;color:#777;margin-top:8px">44px+ touch targets · disabled = booked</div>
+</div>
+<div style="border-top:2px solid #222;padding:12px 14px;background:#f7f6f3"><div style="border:2px solid #222;background:#222;color:#fff;border-radius:8px;padding:15px;text-align:center;font:500 13px 'IBM Plex Mono',monospace">Continue</div></div>
+</div>
+
+<div style="width:360px;border:2px solid #222;border-radius:16px;background:#fff;overflow:hidden">
+<div style="padding:6px 10px;background:#b4442a;color:#fff;font:600 10px 'IBM Plex Mono',monospace">M3 · GROUP NOTICE (bottom sheet)</div>
+<div style="padding:14px;opacity:.3">
+<div style="font:700 20px Caveat,cursive;margin-bottom:8px">Guests</div>
+<div style="border:2px solid #222;border-radius:10px;padding:14px;font:500 15px 'IBM Plex Mono',monospace;text-align:center">14</div>
+<div style="height:10px;background:#e8e5df;border-radius:5px;margin:16px 0 8px"></div><div style="height:10px;background:#e8e5df;border-radius:5px;width:60%"></div>
+</div>
+<div style="border-top:3px solid #222;border-radius:16px 16px 0 0;padding:18px 16px;box-shadow:0 -6px 0 rgba(34,34,34,.08)">
+<div style="width:40px;height:4px;background:#ccc;border-radius:3px;margin:0 auto 14px"></div>
+<div style="font:700 24px Caveat,cursive;margin-bottom:8px">Planning a group booking?</div>
+<div style="font:400 13px/1.6 Helvetica,sans-serif;color:#444">For bookings of more than 10 guests, we ask your group to pre-order your meals so our kitchen can prepare for your visit.</div>
+<div style="display:grid;gap:8px;margin-top:16px;font:500 12px 'IBM Plex Mono',monospace">
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:8px;padding:14px;text-align:center">Continue Group Booking</div>
+<div style="border:2px solid #222;border-radius:8px;padding:14px;text-align:center">View Menu</div>
+</div>
+<div style="font:400 11px/1.5 'IBM Plex Mono',monospace;color:#777;margin-top:12px">Browse the menu and come back — your booking is saved. Final menu selections can be confirmed before your reservation.</div>
+</div>
+</div>
+
+<div style="width:360px;border:2px solid #222;border-radius:16px;background:#fff;overflow:hidden">
+<div style="padding:6px 10px;background:#222;color:#fff;font:600 10px 'IBM Plex Mono',monospace">M4 · GROUP PRE-ORDER</div>
+<div style="padding:14px">
+<div style="display:flex;gap:6px;margin-bottom:6px"><div style="flex:1;height:6px;background:#222;border-radius:4px"></div><div style="flex:1;height:6px;background:#222;border-radius:4px"></div><div style="flex:1;height:6px;background:#ddd;border-radius:4px"></div><div style="flex:1;height:6px;background:#ddd;border-radius:4px"></div></div>
+<div style="font:500 10px 'IBM Plex Mono',monospace;color:#777;margin-bottom:12px">STEP 2 OF 4 · PRE-ORDER</div>
+<div style="border:2px solid #222;border-radius:8px;padding:10px 12px;background:#f7f6f3;font:600 12px 'IBM Plex Mono',monospace;display:flex;justify-content:space-between"><span>Guests: 14</span><span>11 / 14 meals</span></div>
+<div style="display:flex;gap:6px;margin:12px 0;overflow:hidden;font:500 10px 'IBM Plex Mono',monospace">
+<div style="flex:none;border:2px solid #222;background:#222;color:#fff;border-radius:16px;padding:7px 12px">Starters</div>
+<div style="flex:none;border:2px solid #222;border-radius:16px;padding:7px 12px">Mains</div>
+<div style="flex:none;border:2px solid #222;border-radius:16px;padding:7px 12px">Veg</div>
+<div style="flex:none;border:2px solid #222;border-radius:16px;padding:7px 12px">Desserts</div>
+</div>
+<div style="display:grid;gap:10px">
+<sc-for list="{{ dishes }}" as="d" hint-placeholder-count="3">
+<div style="display:flex;gap:10px;border:2px solid #222;border-radius:8px;padding:10px">
+<div style="width:64px;height:64px;flex:none;background-image:repeating-linear-gradient(45deg,#eceae4 0 10px,#f7f6f3 10px 20px);border:2px solid #222;border-radius:6px"></div>
+<div style="flex:1">
+<div style="display:flex;justify-content:space-between"><div style="font:600 13px Helvetica,sans-serif">{{ d.name }}</div><div style="font:600 12px 'IBM Plex Mono',monospace">{{ d.price }}</div></div>
+<div style="font:400 10px/1.4 Helvetica,sans-serif;color:#777;margin:3px 0 6px">{{ d.desc }}</div>
+<div style="display:flex;justify-content:space-between;align-items:center;font:500 12px 'IBM Plex Mono',monospace">
+<span style="border:2px solid #222;border-radius:4px;padding:1px 5px;font-size:9px">{{ d.tags }}</span>
+<span style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border:2px solid #222;border-radius:6px;display:flex;align-items:center;justify-content:center">–</span>{{ d.qty }}<span style="width:26px;height:26px;border:2px solid #222;border-radius:6px;display:flex;align-items:center;justify-content:center;background:#222;color:#fff">+</span></span>
+</div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="border-top:2px solid #222;padding:12px 14px;background:#f7f6f3;display:grid;gap:8px;font:500 12px 'IBM Plex Mono',monospace">
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:8px;padding:14px;text-align:center">Continue</div>
+<div style="text-align:center;text-decoration:underline;color:#555">Skip for now — confirm later</div>
+</div>
+</div>
+
+<div style="width:360px;border:2px solid #222;border-radius:16px;background:#fff;overflow:hidden">
+<div style="padding:6px 10px;background:#222;color:#fff;font:600 10px 'IBM Plex Mono',monospace">M5 · DETAILS + SUMMARY</div>
+<div style="padding:14px">
+<div style="border:2px solid #222;border-radius:8px;padding:12px;background:#f7f6f3">
+<div style="font:600 11px 'IBM Plex Mono',monospace;margin-bottom:6px">YOUR RESERVATION</div>
+<div style="font:400 13px/1.7 Helvetica,sans-serif">Saturday, 24 October · 7:00 PM<br>4 Guests · Restaurant Name</div>
+<div style="font:500 11px 'IBM Plex Mono',monospace;text-decoration:underline;margin-top:8px">Edit Reservation</div>
+</div>
+<div style="display:grid;gap:10px;margin-top:14px">
+<div style="border:2px solid #222;border-radius:8px;padding:14px;font:400 13px Helvetica,sans-serif;color:#aaa">First name *</div>
+<div style="border:2px solid #222;border-radius:8px;padding:14px;font:400 13px Helvetica,sans-serif;color:#aaa">Last name *</div>
+<div style="border:2px solid #222;border-radius:8px;padding:14px;font:400 13px Helvetica,sans-serif;color:#aaa">Email *</div>
+<div style="border:2px solid #b4442a;border-radius:8px;padding:14px;font:400 13px Helvetica,sans-serif;color:#aaa">Mobile *</div>
+<div style="font:400 10px 'IBM Plex Mono',monospace;color:#b4442a;margin-top:-4px">Required field — error shown on blur</div>
+<div style="border:2px solid #222;border-radius:8px;padding:14px;height:60px;font:400 11px/1.4 Helvetica,sans-serif;color:#aaa">Birthday celebration, accessibility, dietary, high chair…</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;font:500 10px 'IBM Plex Mono',monospace">
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:16px;padding:7px 11px">None</div>
+<div style="border:2px solid #222;border-radius:16px;padding:7px 11px">Vegetarian</div>
+<div style="border:2px solid #222;border-radius:16px;padding:7px 11px">Vegan</div>
+<div style="border:2px solid #222;border-radius:16px;padding:7px 11px">GF</div>
+<div style="border:2px solid #222;border-radius:16px;padding:7px 11px">Other</div>
+</div>
+<div style="display:flex;gap:8px;align-items:center;margin-top:12px"><div style="width:18px;height:18px;border:2px solid #222;border-radius:4px;flex:none"></div><div style="font:400 11px/1.4 Helvetica,sans-serif">I agree to the reservation &amp; cancellation policy.</div></div>
+</div>
+<div style="border-top:2px solid #222;padding:12px 14px;background:#f7f6f3"><div style="border:2px solid #bbb;background:#eee;color:#999;border-radius:8px;padding:15px;text-align:center;font:500 13px 'IBM Plex Mono',monospace">Confirm Reservation</div></div>
+</div>
+
+<div style="width:360px;border:2px solid #222;border-radius:16px;background:#fff;overflow:hidden">
+<div style="padding:6px 10px;background:#222;color:#fff;font:600 10px 'IBM Plex Mono',monospace">M6 · CONFIRMATION</div>
+<div style="padding:22px 16px;text-align:center">
+<div style="width:58px;height:58px;border:3px solid #222;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 26px Helvetica,sans-serif;margin:0 auto">✓</div>
+<div style="font:700 28px Caveat,cursive;margin:12px 0 4px">Your Table Is Reserved!</div>
+<div style="font:400 12px Helvetica,sans-serif;color:#555">We look forward to seeing you.</div>
+<div style="border:2px solid #222;border-radius:8px;padding:14px;margin-top:16px;text-align:left;font:400 13px/1.9 Helvetica,sans-serif">Booking ref: #RES1048<br>Saturday, 24 October<br>7:00 PM · 4 Guests<br>John Smith</div>
+<div style="display:grid;gap:8px;margin-top:14px;font:500 12px 'IBM Plex Mono',monospace">
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:8px;padding:14px">Add to Calendar</div>
+<div style="border:2px solid #222;border-radius:8px;padding:14px">View Reservation</div>
+<div style="border:2px solid #222;border-radius:8px;padding:14px">View Menu</div>
+<div style="border:2px dashed #b4442a;color:#b4442a;border-radius:8px;padding:14px">Manage Group Pre-order <span style="font-size:9px">(group only)</span></div>
+<div style="text-decoration:underline;color:#555;padding-top:4px">Back to Home</div>
+</div>
+</div>
+</div>
+
+<div style="width:360px;border:2px solid #222;border-radius:16px;background:#fff;overflow:hidden">
+<div style="padding:6px 10px;background:#222;color:#fff;font:600 10px 'IBM Plex Mono',monospace">M7 · MENU</div>
+<div style="padding:14px">
+<div style="display:flex;gap:6px;overflow:hidden;font:500 10px 'IBM Plex Mono',monospace;border-bottom:2px solid #222;padding-bottom:10px">
+<div style="flex:none;border:2px solid #222;background:#222;color:#fff;border-radius:16px;padding:7px 12px">All</div>
+<div style="flex:none;border:2px solid #222;border-radius:16px;padding:7px 12px">Starters</div>
+<div style="flex:none;border:2px solid #222;border-radius:16px;padding:7px 12px">Mains</div>
+<div style="flex:none;border:2px solid #222;border-radius:16px;padding:7px 12px">Veg</div>
+</div>
+<div style="display:grid;gap:12px;margin-top:12px">
+<sc-for list="{{ menu3 }}" as="m" hint-placeholder-count="3">
+<div style="border:2px solid #222;border-radius:8px;overflow:hidden">
+<div style="height:96px;background-image:repeating-linear-gradient(45deg,#eceae4 0 10px,#f7f6f3 10px 20px);border-bottom:2px solid #222;display:flex;align-items:center;justify-content:center;font:500 10px 'IBM Plex Mono',monospace;color:#8a857a">[ dish photo ]</div>
+<div style="padding:10px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:600 14px Helvetica,sans-serif">{{ m.name }}</div><div style="font:600 12px 'IBM Plex Mono',monospace">{{ m.price }}</div></div>
+<div style="font:400 11px/1.4 Helvetica,sans-serif;color:#777;margin:4px 0 8px">{{ m.desc }}</div>
+<div style="font:500 9px 'IBM Plex Mono',monospace;border:2px solid #222;border-radius:4px;padding:2px 5px;width:fit-content">{{ m.tags }}</div>
+</div>
+</div>
+</sc-for>
+</div>
+</div>
+<div style="border-top:2px solid #222;padding:12px 14px;background:#f7f6f3;display:flex;justify-content:space-between;align-items:center">
+<div style="font:400 11px 'IBM Plex Mono',monospace;color:#777">sticky</div>
+<div style="border:2px solid #222;background:#222;color:#fff;border-radius:6px;padding:10px 16px;font:500 12px 'IBM Plex Mono',monospace">Book a Table</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">Try next: “build <a class="dv-oid" href="#1a">1a</a> out as a clickable prototype” · “merge <a class="dv-oid" href="#1b">1b</a>’s sheet into <a class="dv-oid" href="#1a">1a</a>’s flow” · “more directions for the group pre-order step”</p>
+</section>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+class Component extends DCLogic {
+  renderVals() {
+    const off = { border: "#ddd", bg: "#f6f5f3", color: "#bbb", strike: "line-through" };
+    const on = { border: "#222", bg: "#fff", color: "#222", strike: "none" };
+    const sel = { border: "#222", bg: "#222", color: "#fff", strike: "none" };
+    const times = [
+      { label: "5:00 PM", ...off }, { label: "5:30 PM", ...on }, { label: "6:00 PM", ...on },
+      { label: "6:30 PM", ...on }, { label: "7:00 PM", ...sel }, { label: "7:30 PM", ...on },
+      { label: "8:00 PM", ...on }, { label: "8:30 PM", ...off }
+    ];
+    // October 2026 — Oct 1 is a Thursday (grid starts Monday)
+    const days = [];
+    for (let i = 0; i < 3; i++) days.push({ label: "", border: "transparent", bg: "transparent", color: "transparent" });
+    for (let d = 1; d <= 31; d++) {
+      let s = { border: "#222", bg: "#fff", color: "#222" };
+      if (d < 18) s = { border: "#eee", bg: "#f6f5f3", color: "#ccc" };
+      if (d === 21 || d === 28) s = { border: "#eee", bg: "#f6f5f3", color: "#ccc" };
+      if (d === 24) s = { border: "#222", bg: "#222", color: "#fff" };
+      days.push({ label: String(d), ...s });
+    }
+    const dishes = [
+      { name: "Grilled Chicken", desc: "Herb-marinated chicken, seasonal vegetables and house sauce.", price: "$28", tags: "GF", qty: "4" },
+      { name: "Pan-Seared Salmon", desc: "Citrus butter, greens, crushed new potatoes.", price: "$34", tags: "GF", qty: "3" },
+      { name: "Mushroom Risotto", desc: "Arborio rice, wild mushrooms, aged parmesan.", price: "$26", tags: "V", qty: "2" },
+      { name: "Roasted Cauliflower", desc: "Tahini, pomegranate, toasted seeds.", price: "$22", tags: "VG · GF", qty: "2" }
+    ];
+    const menu = [
+      { name: "Warm Sourdough", desc: "Cultured butter, sea salt.", price: "$9", tags: "V" },
+      { name: "Salt & Pepper Squid", desc: "Lemon aioli, chilli, herbs.", price: "$18", tags: "GF" },
+      { name: "Grilled Chicken", desc: "Herb-marinated, seasonal vegetables, house sauce.", price: "$28", tags: "GF" },
+      { name: "Mushroom Risotto", desc: "Arborio rice, wild mushrooms, aged parmesan.", price: "$26", tags: "V" },
+      { name: "Sticky Date Pudding", desc: "Butterscotch, double cream.", price: "$14", tags: "V" },
+      { name: "House Negroni", desc: "Gin, bitter aperitif, sweet vermouth.", price: "$19", tags: "VG" }
+    ];
+    const popular = [
+      { name: "Grilled Chicken", desc: "Herb-marinated, seasonal veg.", price: "$28", tags: "GF" },
+      { name: "Pan-Seared Salmon", desc: "Citrus butter, greens.", price: "$34", tags: "GF" },
+      { name: "Mushroom Risotto", desc: "Wild mushrooms, parmesan.", price: "$26", tags: "V" },
+      { name: "Sticky Date Pudding", desc: "Butterscotch, cream.", price: "$14", tags: "V" }
+    ];
+    return { times, days, dishes, menu, menu3: menu.slice(0, 3), popular };
+  }
+}
+</script>
+</body>
+</html>

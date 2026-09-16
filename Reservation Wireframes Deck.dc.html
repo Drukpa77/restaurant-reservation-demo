@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Caveat:wght@500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"><style>body{margin:0;background:#1a1a1a}a{color:#b4442a}a:hover{color:#8c3520}</style></helmet>
+
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="1920" height="1080" hint-size="100%,100%">
+
+<section data-label="Title" data-screen-label="01" data-speaker-notes="Frame the deck: these are wireframes, not visual design. Two journeys, nine screens, one shared booking draft." style="background:#f0eee9;font-family:Archivo,Helvetica,sans-serif;color:#1a1a1a;padding:120px 110px 90px;display:flex;flex-direction:column;justify-content:space-between">
+<div style="font:600 26px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#b4442a">WIREFRAMES · V1</div>
+<div style="display:flex;flex-direction:column;gap:34px">
+<div style="font:700 104px/1.02 Archivo,sans-serif;max-width:1400px">Restaurant Reservation Flow</div>
+<div style="font:400 40px/1.4 Archivo,sans-serif;color:#4a4740;max-width:1180px">Screen-by-screen structure for the standard booking and the large-group pre-order journey.</div>
+</div>
+<div style="display:flex;gap:80px;font:500 28px 'IBM Plex Mono',monospace;color:#4a4740">
+<div>9 screens</div><div>2 journeys</div><div>Desktop + mobile</div>
+</div>
+</section>
+
+<section data-label="Two journeys" data-screen-label="02" data-speaker-notes="Everything hinges on the guest count. Ten or fewer is a three-step booking. Over ten adds a pre-order step before details." style="background:#f0eee9;font-family:Archivo,Helvetica,sans-serif;color:#1a1a1a;padding:100px 110px 80px;display:flex;flex-direction:column;gap:56px">
+<div style="font:700 64px/1.1 Archivo,sans-serif">Two journeys, split by guest count</div>
+<div style="display:flex;flex-direction:column;gap:52px">
+<div style="display:flex;flex-direction:column;gap:22px">
+<div style="font:600 28px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#4a4740">STANDARD · UP TO 10 GUESTS</div>
+<div style="display:flex;align-items:center;gap:18px;font:500 28px 'IBM Plex Mono',monospace">
+<div style="border:3px solid #1a1a1a;border-radius:8px;padding:20px 26px;background:#e4e0d8">Home</div><div style="font-size:30px">→</div>
+<div style="border:3px solid #1a1a1a;border-radius:8px;padding:20px 26px;background:#fff">1 · Date / Time / Guests</div><div style="font-size:30px">→</div>
+<div style="border:3px solid #1a1a1a;border-radius:8px;padding:20px 26px;background:#fff">2 · Your details</div><div style="font-size:30px">→</div>
+<div style="border:3px solid #1a1a1a;border-radius:8px;padding:20px 26px;background:#1a1a1a;color:#fff">3 · Confirmation</div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:22px">
+<div style="font:600 28px 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#b4442a">GROUP · MORE THAN 10 GUESTS</div>
+<div style="display:flex;align-items:center;gap:12px;font:500 26px 'IBM Plex Mono',monospace;white-space:nowrap">
+<div style="border:3px solid #1a1a1a;border-radius:8px;padding:20px 20px;background:#e4e0d8">Home</div><div style="font-size:28px">→</div>
+<div style="border:3px dashed #b4442a;border-radius:8px;padding:20px 20px;color:#b4442a;background:#fff">Group notice</div><div style="font-size:28px">→</div>
+<div style="border:3px solid #1a1a1a;border-radius:8px;padding:20px 20px;background:#fff">1 · Reservation</div><div style="font-size:28px">→</div>
+<div style="border:3px solid #1a1a1a;border-radius:8px;padding:20px 20px;background:#fff">2 · Pre-order</div><div style="font-size:28px">→</div>
+<div style="border:3px solid #1a1a1a;border-radius:8px;padding:20px 20px;background:#fff">3 · Details</div><div style="font-size:28px">→</div>
+<div style="border:3px solid #1a1a1a;border-radius:8px;padding:20px 20px;background:#1a1a1a;color:#fff">4 · Confirmation</div>
+</div>
+</div>
+</div>
+<div style="font:400 34px/1.45 Archivo,sans-serif;color:#4a4740;max-width:1500px">The menu stays reachable from every step. The booking draft persists, so a guest who leaves to browse returns to the step they left.</div>
+</section>
+
+<section data-label="Home" data-screen-label="03" data-speaker-notes="Booking widget overlaps the hero so the primary action is above the fold. The guests dropdown ends with More than 10, which is what triggers the group path." style="background:#f0eee9;font-family:Archivo,Helvetica,sans-serif;color:#1a1a1a;padding:90px 100px 80px;display:grid;grid-template-columns:560px 1fr;gap:70px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:30px">
+<div style="font:600 26px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#b4442a">SCREEN 01</div>
+<div style="font:700 64px/1.08 Archivo,sans-serif">Home</div>
+<div style="font:400 32px/1.5 Archivo,sans-serif;color:#4a4740">The booking widget overlaps the hero so the primary action never requires a scroll.</div>
+<div style="display:flex;flex-direction:column;gap:20px;font:400 28px/1.45 Archivo,sans-serif;color:#1a1a1a">
+<div>Date, time and guests captured in one row.</div>
+<div>Guests list ends with “More than 10”, the entry point to the group journey.</div>
+<div>Below: about, popular dishes, hours, location, contact.</div>
+</div>
+</div>
+<div style="width:1080px;height:800px;overflow:hidden;border:3px solid #1a1a1a;border-radius:12px;background:#fff">
+<div style="width:1080px">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:20px 28px;border-bottom:3px solid #1a1a1a">
+<div style="display:flex;align-items:center;gap:14px"><div style="width:38px;height:38px;border:3px solid #1a1a1a;border-radius:50%"></div><div style="font:700 30px Caveat,cursive">Restaurant Name</div></div>
+<div style="display:flex;align-items:center;gap:24px;font:500 17px 'IBM Plex Mono',monospace"><span>Home</span><span style="color:#8a857a">Menu</span><span style="color:#8a857a">Contact</span><div style="background:#1a1a1a;color:#fff;border-radius:8px;padding:12px 18px">Book a Table</div></div>
+</div>
+<div style="height:300px;background-image:repeating-linear-gradient(45deg,#eceae4 0 12px,#f7f6f3 12px 24px);border-bottom:3px solid #1a1a1a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center">
+<div style="font:700 54px/1.1 Caveat,cursive;max-width:700px">Good Food. Great Company.<br>Your Table Awaits.</div>
+<div style="font:400 19px Archivo,sans-serif;color:#5a564d">Reserve your table in just a few clicks.</div>
+</div>
+<div style="padding:0 34px;margin-top:-46px">
+<div style="border:4px solid #1a1a1a;border-radius:12px;background:#fff;box-shadow:8px 8px 0 rgba(26,26,26,.14);padding:26px">
+<div style="font:700 34px Caveat,cursive;margin-bottom:18px">Find a table</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:18px;align-items:end">
+<div><div style="font:500 15px 'IBM Plex Mono',monospace;color:#8a857a;margin-bottom:8px">DATE</div><div style="border:3px solid #1a1a1a;border-radius:8px;padding:16px;font:400 19px Archivo,sans-serif">Sat 24 Oct</div></div>
+<div><div style="font:500 15px 'IBM Plex Mono',monospace;color:#8a857a;margin-bottom:8px">TIME</div><div style="border:3px solid #1a1a1a;border-radius:8px;padding:16px;font:400 19px Archivo,sans-serif">7:00 PM</div></div>
+<div><div style="font:500 15px 'IBM Plex Mono',monospace;color:#8a857a;margin-bottom:8px">GUESTS</div><div style="border:3px solid #1a1a1a;border-radius:8px;padding:16px;font:400 19px Archivo,sans-serif">4 Guests</div></div>
+<div style="background:#1a1a1a;color:#fff;border-radius:8px;padding:18px 28px;font:500 17px 'IBM Plex Mono',monospace">Find a Table</div>
+</div>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:50px 34px 0;align-items:center">
+<div style="height:170px;background-image:repeating-linear-gradient(45deg,#eceae4 0 12px,#f7f6f3 12px 24px);border:3px solid #1a1a1a;border-radius:10px;display:flex;align-items:center;justify-content:center;font:500 16px 'IBM Plex Mono',monospace;color:#8a857a">[ interior image ]</div>
+<div>
+<div style="font:700 34px Caveat,cursive;margin-bottom:14px">About the restaurant</div>
+<div style="height:14px;background:#e8e5df;border-radius:7px;margin-bottom:12px"></div>
+<div style="height:14px;background:#e8e5df;border-radius:7px;margin-bottom:12px"></div>
+<div style="height:14px;background:#e8e5df;border-radius:7px;width:68%"></div>
+</div>
+</div>
+<div style="padding:44px 34px 0">
+<div style="font:700 34px Caveat,cursive;margin-bottom:16px">Popular dishes</div>
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px">
+<div style="height:110px;border:3px solid #1a1a1a;border-radius:10px;background-image:repeating-linear-gradient(45deg,#eceae4 0 12px,#f7f6f3 12px 24px)"></div>
+<div style="height:110px;border:3px solid #1a1a1a;border-radius:10px;background-image:repeating-linear-gradient(45deg,#eceae4 0 12px,#f7f6f3 12px 24px)"></div>
+<div style="height:110px;border:3px solid #1a1a1a;border-radius:10px;background-image:repeating-linear-gradient(45deg,#eceae4 0 12px,#f7f6f3 12px 24px)"></div>
+<div style="height:110px;border:3px solid #1a1a1a;border-radius:10px;background-image:repeating-linear-gradient(45deg,#eceae4 0 12px,#f7f6f3 12px 24px)"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section data-label="Step 1" data-screen-label="04" data-speaker-notes="Guests first, then date, then time — each choice narrows the next. Continue stays disabled until a time is selected." style="background:#f0eee9;font-family:Archivo,Helvetica,sans-serif;color:#1a1a1a;padding:90px 100px 80px;display:grid;grid-template-columns:560px 1fr;gap:70px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:30px">
+<div style="font:600 26px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#b4442a">SCREEN 02 · STEP 1 OF 3</div>
+<div style="font:700 64px/1.08 Archivo,sans-serif">Date, time and guests</div>
+<div style="font:400 32px/1.5 Archivo,sans-serif;color:#4a4740">Guests, then date, then time — each choice narrows the one after it.</div>
+<div style="display:flex;flex-direction:column;gap:20px;font:400 28px/1.45 Archivo,sans-serif">
+<div>Unavailable dates and fully booked times are visibly disabled, never hidden.</div>
+<div>A running selection summary sits beside the time grid.</div>
+<div>Continue stays disabled until a time is chosen.</div>
+</div>
+</div>
+<div style="width:1080px;height:800px;overflow:hidden;border:3px solid #1a1a1a;border-radius:12px;background:#fff">
+<div style="padding:30px 32px">
+<div style="display:flex;align-items:center;gap:14px;font:500 17px 'IBM Plex Mono',monospace;margin-bottom:30px">
+<span style="background:#1a1a1a;color:#fff;border-radius:22px;padding:10px 20px">1 · Select Table</span><span style="color:#b5b0a5">———</span>
+<span style="border:3px solid #d8d4cb;color:#a09a8e;border-radius:22px;padding:10px 20px">2 · Your Details</span><span style="color:#b5b0a5">———</span>
+<span style="border:3px solid #d8d4cb;color:#a09a8e;border-radius:22px;padding:10px 20px">3 · Confirmation</span>
+</div>
+<div style="display:grid;grid-template-columns:1.05fr 1fr;gap:34px">
+<div>
+<div style="font:700 32px Caveat,cursive;margin-bottom:12px">How many guests?</div>
+<div style="display:flex;align-items:center;gap:22px;border:3px solid #1a1a1a;border-radius:10px;padding:16px 22px;width:fit-content;font:500 22px 'IBM Plex Mono',monospace">
+<span style="width:38px;height:38px;border:3px solid #1a1a1a;border-radius:8px;display:flex;align-items:center;justify-content:center">–</span>4 Guests
+<span style="width:38px;height:38px;background:#1a1a1a;color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center">+</span>
+</div>
+<div style="font:700 32px Caveat,cursive;margin:26px 0 12px">Pick a date</div>
+<div style="border:3px solid #1a1a1a;border-radius:10px;padding:18px">
+<div style="display:flex;justify-content:space-between;font:500 18px 'IBM Plex Mono',monospace;margin-bottom:12px"><span>‹</span><span>October 2026</span><span>›</span></div>
+<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;font:500 15px 'IBM Plex Mono',monospace;color:#a09a8e;text-align:center;margin-bottom:6px"><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div><div>S</div></div>
+<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;font:400 18px Archivo,sans-serif;text-align:center">
+<div style="padding:10px 0;color:#cfcac0">&nbsp;</div><div style="padding:10px 0;color:#cfcac0">&nbsp;</div><div style="padding:10px 0;color:#cfcac0">&nbsp;</div>
+<div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">1</div><div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">2</div><div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">3</div><div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">4</div>
+<div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">5</div><div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">6</div><div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">7</div><div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">8</div><div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">9</div><div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">10</div><div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">11</div>
+<div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">12</div><div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">13</div><div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">14</div><div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">15</div><div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">16</div><div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">17</div><div style="padding:10px 0;border:3px solid #1a1a1a;border-radius:6px">18</div>
+<div style="padding:10px 0;border:3px solid #1a1a1a;border-radius:6px">19</div><div style="padding:10px 0;border:3px solid #1a1a1a;border-radius:6px">20</div><div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">21</div><div style="padding:10px 0;border:3px solid #1a1a1a;border-radius:6px">22</div><div style="padding:10px 0;border:3px solid #1a1a1a;border-radius:6px">23</div><div style="padding:10px 0;background:#1a1a1a;color:#fff;border-radius:6px">24</div><div style="padding:10px 0;border:3px solid #1a1a1a;border-radius:6px">25</div>
+<div style="padding:10px 0;border:3px solid #1a1a1a;border-radius:6px">26</div><div style="padding:10px 0;border:3px solid #1a1a1a;border-radius:6px">27</div><div style="padding:10px 0;color:#cfcac0;background:#f6f5f3;border-radius:6px">28</div><div style="padding:10px 0;border:3px solid #1a1a1a;border-radius:6px">29</div><div style="padding:10px 0;border:3px solid #1a1a1a;border-radius:6px">30</div><div style="padding:10px 0;border:3px solid #1a1a1a;border-radius:6px">31</div>
+</div>
+</div>
+</div>
+<div>
+<div style="font:700 32px Caveat,cursive;margin-bottom:12px">Available times · Sat 24 Oct</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;font:500 19px 'IBM Plex Mono',monospace;text-align:center">
+<div style="border:3px solid #e2ded6;background:#f6f5f3;color:#c2bdb2;border-radius:10px;padding:18px 0;text-decoration:line-through">5:00 PM</div>
+<div style="border:3px solid #1a1a1a;border-radius:10px;padding:18px 0">5:30 PM</div>
+<div style="border:3px solid #1a1a1a;border-radius:10px;padding:18px 0">6:00 PM</div>
+<div style="border:3px solid #1a1a1a;border-radius:10px;padding:18px 0">6:30 PM</div>
+<div style="background:#1a1a1a;color:#fff;border-radius:10px;padding:18px 0">7:00 PM</div>
+<div style="border:3px solid #1a1a1a;border-radius:10px;padding:18px 0">7:30 PM</div>
+<div style="border:3px solid #1a1a1a;border-radius:10px;padding:18px 0">8:00 PM</div>
+<div style="border:3px solid #e2ded6;background:#f6f5f3;color:#c2bdb2;border-radius:10px;padding:18px 0;text-decoration:line-through">8:30 PM</div>
+<div style="border:3px solid #e2ded6;background:#f6f5f3;color:#c2bdb2;border-radius:10px;padding:18px 0;text-decoration:line-through">9:00 PM</div>
+</div>
+<div style="border:3px solid #1a1a1a;border-radius:10px;padding:18px;margin-top:26px;background:#f7f6f3">
+<div style="font:600 17px 'IBM Plex Mono',monospace;margin-bottom:10px">YOUR SELECTION</div>
+<div style="font:400 20px/1.6 Archivo,sans-serif">Saturday, 24 October · 7:00 PM · 4 Guests</div>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:30px;font:500 18px 'IBM Plex Mono',monospace">
+<span style="color:#8a857a">‹ Back</span>
+<div style="background:#1a1a1a;color:#fff;border-radius:8px;padding:18px 34px">Continue</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section data-label="Edge states" data-screen-label="05" data-speaker-notes="Two states that decide whether the flow feels helpful. No availability always offers the nearest times; the group notice explains the pre-order rather than blocking." style="background:#e4e0d8;font-family:Archivo,Helvetica,sans-serif;color:#1a1a1a;padding:90px 100px 80px;display:flex;flex-direction:column;gap:46px">
+<div style="display:flex;flex-direction:column;gap:18px">
+<div style="font:600 26px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#b4442a">STATES</div>
+<div style="font:700 64px/1.1 Archivo,sans-serif">The two moments the flow can stall</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:22px">
+<div style="font:600 30px 'IBM Plex Mono',monospace">No availability</div>
+<div style="border:3px solid #1a1a1a;border-radius:12px;background:#fff;padding:30px">
+<div style="border:3px dashed #b4442a;border-radius:10px;background:#fdf4f1;padding:26px">
+<div style="font:600 26px Archivo,sans-serif;margin-bottom:10px">Sorry, there are no tables available at this time.</div>
+<div style="font:400 22px Archivo,sans-serif;color:#5a564d">Here are the closest available times:</div>
+<div style="display:flex;gap:14px;margin-top:20px;font:500 20px 'IBM Plex Mono',monospace">
+<div style="border:3px solid #1a1a1a;border-radius:10px;padding:16px 22px">6:30 PM</div>
+<div style="border:3px solid #1a1a1a;border-radius:10px;padding:16px 22px">7:30 PM</div>
+<div style="border:3px solid #1a1a1a;border-radius:10px;padding:16px 22px">8:00 PM</div>
+</div>
+</div>
+</div>
+<div style="font:400 26px/1.45 Archivo,sans-serif;color:#4a4740">Never a dead end: nearest times, plus a link to try another date.</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:22px">
+<div style="font:600 30px 'IBM Plex Mono',monospace;color:#b4442a">Group booking notice</div>
+<div style="border:3px solid #1a1a1a;border-radius:12px;background:#fff;padding:30px">
+<div style="font:700 40px Caveat,cursive;margin-bottom:14px">Planning a group booking?</div>
+<div style="font:400 22px/1.5 Archivo,sans-serif;color:#4a4740">For bookings of more than 10 guests, we ask your group to pre-order your meals so our kitchen can prepare for your visit.</div>
+<div style="display:flex;gap:14px;margin-top:24px;font:500 19px 'IBM Plex Mono',monospace">
+<div style="background:#1a1a1a;color:#fff;border-radius:8px;padding:18px 22px">Continue Group Booking</div>
+<div style="border:3px solid #1a1a1a;border-radius:8px;padding:18px 22px">View Menu</div>
+</div>
+</div>
+<div style="font:400 26px/1.45 Archivo,sans-serif;color:#4a4740">Explains the requirement and saves the draft so browsing the menu costs nothing.</div>
+</div>
+</div>
+</section>
+
+<section data-label="Group pre-order" data-screen-label="06" data-speaker-notes="The organiser picks quantities for the group, not per-guest choices. Progress against head count is always visible, and they can skip and confirm later." style="background:#f0eee9;font-family:Archivo,Helvetica,sans-serif;color:#1a1a1a;padding:90px 100px 80px;display:grid;grid-template-columns:560px 1fr;gap:70px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:30px">
+<div style="font:600 26px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#b4442a">SCREEN 03 · GROUP STEP 2 OF 4</div>
+<div style="font:700 64px/1.08 Archivo,sans-serif">Group pre-order</div>
+<div style="font:400 32px/1.5 Archivo,sans-serif;color:#4a4740">The organiser sets quantities for the table — no per-guest selection in this version.</div>
+<div style="display:flex;flex-direction:column;gap:20px;font:400 28px/1.45 Archivo,sans-serif">
+<div>Meals-selected counter tracks progress against head count.</div>
+<div>Category chips keep long menus navigable.</div>
+<div>“Skip for now” keeps the booking completable in one sitting.</div>
+</div>
+</div>
+<div style="width:1080px;height:800px;overflow:hidden;border:3px solid #1a1a1a;border-radius:12px;background:#fff">
+<div style="padding:30px 32px">
+<div style="display:flex;align-items:center;gap:12px;font:500 16px 'IBM Plex Mono',monospace;margin-bottom:26px">
+<span style="border:3px solid #1a1a1a;border-radius:22px;padding:10px 18px">1 · Reservation ✓</span><span style="color:#b5b0a5">——</span>
+<span style="background:#1a1a1a;color:#fff;border-radius:22px;padding:10px 18px">2 · Pre-order</span><span style="color:#b5b0a5">——</span>
+<span style="border:3px solid #d8d4cb;color:#a09a8e;border-radius:22px;padding:10px 18px">3 · Details</span><span style="color:#b5b0a5">——</span>
+<span style="border:3px solid #d8d4cb;color:#a09a8e;border-radius:22px;padding:10px 18px">4 · Confirmation</span>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;border:3px solid #1a1a1a;border-radius:10px;padding:18px 24px;background:#f7f6f3;margin-bottom:24px;font:600 20px 'IBM Plex Mono',monospace">
+<div>Guests: 14</div>
+<div style="display:flex;align-items:center;gap:18px"><div>Meals selected: 11 / 14</div><div style="width:240px;height:14px;border:3px solid #1a1a1a;border-radius:8px;overflow:hidden"><div style="width:78%;height:100%;background:#1a1a1a"></div></div></div>
+</div>
+<div style="display:flex;gap:12px;margin-bottom:24px;font:500 17px 'IBM Plex Mono',monospace">
+<div style="background:#1a1a1a;color:#fff;border-radius:22px;padding:12px 22px">Starters</div>
+<div style="border:3px solid #1a1a1a;border-radius:22px;padding:12px 22px">Mains</div>
+<div style="border:3px solid #1a1a1a;border-radius:22px;padding:12px 22px">Vegetarian</div>
+<div style="border:3px solid #1a1a1a;border-radius:22px;padding:12px 22px">Desserts</div>
+<div style="border:3px solid #1a1a1a;border-radius:22px;padding:12px 22px">Drinks</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+<div style="display:flex;gap:18px;border:3px solid #1a1a1a;border-radius:10px;padding:16px">
+<div style="width:110px;height:110px;flex:none;border:3px solid #1a1a1a;border-radius:8px;background-image:repeating-linear-gradient(45deg,#eceae4 0 12px,#f7f6f3 12px 24px)"></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:600 22px Archivo,sans-serif">Grilled Chicken</div><div style="font:600 20px 'IBM Plex Mono',monospace">$28</div></div>
+<div style="font:400 17px/1.4 Archivo,sans-serif;color:#6a655b">Herb-marinated chicken, seasonal vegetables, house sauce.</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;font:500 19px 'IBM Plex Mono',monospace">
+<span style="border:3px solid #1a1a1a;border-radius:6px;padding:2px 8px;font-size:14px">GF</span>
+<span style="display:flex;align-items:center;gap:14px"><span style="width:32px;height:32px;border:3px solid #1a1a1a;border-radius:8px;display:flex;align-items:center;justify-content:center">–</span>4<span style="width:32px;height:32px;background:#1a1a1a;color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center">+</span></span>
+</div>
+</div>
+</div>
+<div style="display:flex;gap:18px;border:3px solid #1a1a1a;border-radius:10px;padding:16px">
+<div style="width:110px;height:110px;flex:none;border:3px solid #1a1a1a;border-radius:8px;background-image:repeating-linear-gradient(45deg,#eceae4 0 12px,#f7f6f3 12px 24px)"></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:600 22px Archivo,sans-serif">Pan-Seared Salmon</div><div style="font:600 20px 'IBM Plex Mono',monospace">$34</div></div>
+<div style="font:400 17px/1.4 Archivo,sans-serif;color:#6a655b">Citrus butter, greens, crushed new potatoes.</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;font:500 19px 'IBM Plex Mono',monospace">
+<span style="border:3px solid #1a1a1a;border-radius:6px;padding:2px 8px;font-size:14px">GF</span>
+<span style="display:flex;align-items:center;gap:14px"><span style="width:32px;height:32px;border:3px solid #1a1a1a;border-radius:8px;display:flex;align-items:center;justify-content:center">–</span>3<span style="width:32px;height:32px;background:#1a1a1a;color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center">+</span></span>
+</div>
+</div>
+</div>
+<div style="display:flex;gap:18px;border:3px solid #1a1a1a;border-radius:10px;padding:16px">
+<div style="width:110px;height:110px;flex:none;border:3px solid #1a1a1a;border-radius:8px;background-image:repeating-linear-gradient(45deg,#eceae4 0 12px,#f7f6f3 12px 24px)"></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:600 22px Archivo,sans-serif">Mushroom Risotto</div><div style="font:600 20px 'IBM Plex Mono',monospace">$26</div></div>
+<div style="font:400 17px/1.4 Archivo,sans-serif;color:#6a655b">Arborio rice, wild mushrooms, aged parmesan.</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;font:500 19px 'IBM Plex Mono',monospace">
+<span style="border:3px solid #1a1a1a;border-radius:6px;padding:2px 8px;font-size:14px">V</span>
+<span style="display:flex;align-items:center;gap:14px"><span style="width:32px;height:32px;border:3px solid #1a1a1a;border-radius:8px;display:flex;align-items:center;justify-content:center">–</span>2<span style="width:32px;height:32px;background:#1a1a1a;color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center">+</span></span>
+</div>
+</div>
+</div>
+<div style="display:flex;gap:18px;border:3px solid #1a1a1a;border-radius:10px;padding:16px">
+<div style="width:110px;height:110px;flex:none;border:3px solid #1a1a1a;border-radius:8px;background-image:repeating-linear-gradient(45deg,#eceae4 0 12px,#f7f6f3 12px 24px)"></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px">
+<div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:600 22px Archivo,sans-serif">Roasted Cauliflower</div><div style="font:600 20px 'IBM Plex Mono',monospace">$22</div></div>
+<div style="font:400 17px/1.4 Archivo,sans-serif;color:#6a655b">Tahini, pomegranate, toasted seeds.</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:auto;font:500 19px 'IBM Plex Mono',monospace">
+<span style="border:3px solid #1a1a1a;border-radius:6px;padding:2px 8px;font-size:14px">VG · GF</span>
+<span style="display:flex;align-items:center;gap:14px"><span style="width:32px;height:32px;border:3px solid #1a1a1a;border-radius:8px;display:flex;align-items:center;justify-content:center">–</span>2<span style="width:32px;height:32px;background:#1a1a1a;color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center">+</span></span>
+</div>
+</div>
+</div>
+</div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:28px;font:500 18px 'IBM Plex Mono',monospace">
+<span style="color:#8a857a">‹ Back to reservation</span>
+<div style="display:flex;gap:18px;align-items:center"><span style="text-decoration:underline">Skip for now — confirm later</span><div style="background:#1a1a1a;color:#fff;border-radius:8px;padding:18px 34px">Continue</div></div>
+</div>
+</div>
+</div>
+</section>
+
+<section data-label="Your details" data-screen-label="07" data-speaker-notes="Form on the left, sticky summary on the right so guests can edit without losing their place. Mobile number is required because confirmations go by SMS." style="background:#f0eee9;font-family:Archivo,Helvetica,sans-serif;color:#1a1a1a;padding:90px 100px 80px;display:grid;grid-template-columns:560px 1fr;gap:70px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:30px">
+<div style="font:600 26px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#b4442a">SCREEN 04 · STEP 2 OF 3</div>
+<div style="font:700 64px/1.08 Archivo,sans-serif">Your details</div>
+<div style="font:400 32px/1.5 Archivo,sans-serif;color:#4a4740">Form on the left, a persistent booking summary on the right.</div>
+<div style="display:flex;flex-direction:column;gap:20px;font:400 28px/1.45 Archivo,sans-serif">
+<div>Mobile is required — confirmations go out by SMS.</div>
+<div>Requests and dietary needs captured before arrival.</div>
+<div>Inline validation on blur; the CTA unlocks when the form passes.</div>
+</div>
+</div>
+<div style="width:1080px;height:800px;overflow:hidden;border:3px solid #1a1a1a;border-radius:12px;background:#fff">
+<div style="padding:30px 32px;display:grid;grid-template-columns:1.5fr 1fr;gap:34px">
+<div>
+<div style="font:700 36px Caveat,cursive;margin-bottom:20px">Your details</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+<div><div style="font:500 15px 'IBM Plex Mono',monospace;color:#8a857a;margin-bottom:8px">FIRST NAME *</div><div style="border:3px solid #1a1a1a;border-radius:8px;padding:16px;font:400 19px Archivo,sans-serif">John</div></div>
+<div><div style="font:500 15px 'IBM Plex Mono',monospace;color:#8a857a;margin-bottom:8px">LAST NAME *</div><div style="border:3px solid #1a1a1a;border-radius:8px;padding:16px;font:400 19px Archivo,sans-serif">Smith</div></div>
+<div><div style="font:500 15px 'IBM Plex Mono',monospace;color:#8a857a;margin-bottom:8px">EMAIL *</div><div style="border:3px solid #1a1a1a;border-radius:8px;padding:16px;font:400 19px Archivo,sans-serif">john@example.com</div></div>
+<div><div style="font:500 15px 'IBM Plex Mono',monospace;color:#b4442a;margin-bottom:8px">MOBILE NUMBER *</div><div style="border:3px solid #b4442a;border-radius:8px;padding:16px;font:400 19px Archivo,sans-serif;color:#b5b0a5">04__ ___ ___</div><div style="font:400 15px 'IBM Plex Mono',monospace;color:#b4442a;margin-top:8px">Required — we text your confirmation.</div></div>
+</div>
+<div style="margin-top:20px"><div style="font:500 15px 'IBM Plex Mono',monospace;color:#8a857a;margin-bottom:8px">SPECIAL REQUESTS</div><div style="border:3px solid #1a1a1a;border-radius:8px;padding:16px;height:90px;font:400 18px Archivo,sans-serif;color:#b5b0a5">Birthday, accessibility, high chair…</div></div>
+<div style="margin-top:20px"><div style="font:500 15px 'IBM Plex Mono',monospace;color:#8a857a;margin-bottom:10px">DIETARY REQUIREMENTS</div>
+<div style="display:flex;flex-wrap:wrap;gap:12px;font:500 17px 'IBM Plex Mono',monospace">
+<div style="background:#1a1a1a;color:#fff;border-radius:22px;padding:12px 18px">None</div>
+<div style="border:3px solid #1a1a1a;border-radius:22px;padding:12px 18px">Vegetarian</div>
+<div style="border:3px solid #1a1a1a;border-radius:22px;padding:12px 18px">Vegan</div>
+<div style="border:3px solid #1a1a1a;border-radius:22px;padding:12px 18px">Gluten Free</div>
+</div></div>
+<div style="display:flex;gap:14px;align-items:center;margin-top:22px"><div style="width:26px;height:26px;border:3px solid #1a1a1a;border-radius:6px;flex:none"></div><div style="font:400 18px/1.4 Archivo,sans-serif">I agree to the reservation and cancellation policy.</div></div>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-top:28px;font:500 18px 'IBM Plex Mono',monospace"><span style="color:#8a857a">‹ Back</span><div style="border:3px solid #d8d4cb;background:#f0eeea;color:#a09a8e;border-radius:8px;padding:18px 30px">Confirm Reservation</div></div>
+</div>
+<div>
+<div style="border:4px solid #1a1a1a;border-radius:12px;padding:24px;box-shadow:7px 7px 0 rgba(26,26,26,.12)">
+<div style="font:700 32px Caveat,cursive;margin-bottom:16px">Your reservation</div>
+<div style="font:400 20px/2 Archivo,sans-serif">Saturday, 24 October<br>7:00 PM<br>4 Guests<br>Restaurant Name</div>
+<div style="height:3px;background:#e2ded6;margin:20px 0"></div>
+<div style="font:500 17px 'IBM Plex Mono',monospace;text-decoration:underline">Edit Reservation</div>
+</div>
+<div style="border:3px dashed #b4442a;border-radius:12px;padding:24px;margin-top:24px;background:#fdf4f1">
+<div style="font:500 15px 'IBM Plex Mono',monospace;color:#b4442a;margin-bottom:12px">GROUP VARIANT</div>
+<div style="font:400 20px/1.9 Archivo,sans-serif">14 Guests<br>Sat 24 October · 7:00 PM<br>Pre-order: 12 meals</div>
+<div style="font:500 17px 'IBM Plex Mono',monospace;text-decoration:underline;margin-top:14px">View / Edit Pre-order</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section data-label="Confirmation" data-screen-label="08" data-speaker-notes="The booking reference is the key to everything afterwards — manage, cancel, edit the group pre-order. Confirmation also goes out by email and SMS." style="background:#1a1a1a;font-family:Archivo,Helvetica,sans-serif;color:#f0eee9;padding:90px 100px 80px;display:grid;grid-template-columns:560px 1fr;gap:70px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:30px">
+<div style="font:600 26px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#e0876c">SCREEN 05 · STEP 3 OF 3</div>
+<div style="font:700 64px/1.08 Archivo,sans-serif">Confirmation</div>
+<div style="font:400 32px/1.5 Archivo,sans-serif;color:#c8c3b8">The reference is the key to everything that happens after booking.</div>
+<div style="display:flex;flex-direction:column;gap:20px;font:400 28px/1.45 Archivo,sans-serif">
+<div>Sent by email and SMS as well as shown here.</div>
+<div>Calendar, menu and manage-booking actions all offered.</div>
+<div>Groups get a link to edit the pre-order up to 48 hours before.</div>
+</div>
+</div>
+<div style="width:1080px;height:800px;overflow:hidden;border:3px solid #f0eee9;border-radius:12px;background:#fff;color:#1a1a1a">
+<div style="padding:48px 40px;display:flex;flex-direction:column;align-items:center;text-align:center">
+<div style="width:96px;height:96px;border:4px solid #1a1a1a;border-radius:50%;display:flex;align-items:center;justify-content:center;font:700 44px Archivo,sans-serif">✓</div>
+<div style="font:700 56px Caveat,cursive;margin:20px 0 8px">Your Table Is Reserved!</div>
+<div style="font:400 20px Archivo,sans-serif;color:#5a564d">We look forward to seeing you.</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:26px;width:880px;margin-top:36px;text-align:left">
+<div style="border:3px solid #1a1a1a;border-radius:12px;padding:26px">
+<div style="font:600 16px 'IBM Plex Mono',monospace;color:#8a857a;margin-bottom:14px">RESERVATION DETAILS</div>
+<div style="font:400 20px/2 Archivo,sans-serif">Booking reference: #RES1048<br>Saturday, 24 October<br>7:00 PM · 4 Guests<br>John Smith</div>
+</div>
+<div style="border:3px dashed #b4442a;border-radius:12px;padding:26px;background:#fdf4f1">
+<div style="font:600 16px 'IBM Plex Mono',monospace;color:#b4442a;margin-bottom:14px">GROUP VARIANT</div>
+<div style="font:400 20px/2 Archivo,sans-serif">Group booking · 14 Guests<br>Pre-order: 12 meals selected</div>
+<div style="border:3px solid #1a1a1a;border-radius:8px;padding:14px 18px;margin-top:16px;width:fit-content;font:500 17px 'IBM Plex Mono',monospace">Manage Group Pre-order</div>
+</div>
+</div>
+<div style="display:flex;gap:16px;margin-top:36px;font:500 18px 'IBM Plex Mono',monospace">
+<div style="background:#1a1a1a;color:#fff;border-radius:8px;padding:18px 24px">Add to Calendar</div>
+<div style="border:3px solid #1a1a1a;border-radius:8px;padding:18px 24px">View Reservation</div>
+<div style="border:3px solid #1a1a1a;border-radius:8px;padding:18px 24px">View Menu</div>
+<div style="border:3px solid #1a1a1a;border-radius:8px;padding:18px 24px">Back to Home</div>
+</div>
+</div>
+</div>
+</section>
+
+<section data-label="Menu" data-screen-label="09" data-speaker-notes="The menu is browsable without a booking, and a sticky bar returns the guest to the step they left." style="background:#f0eee9;font-family:Archivo,Helvetica,sans-serif;color:#1a1a1a;padding:90px 100px 80px;display:grid;grid-template-columns:560px 1fr;gap:70px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:30px">
+<div style="font:600 26px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#b4442a">SCREEN 06</div>
+<div style="font:700 64px/1.08 Archivo,sans-serif">Menu</div>
+<div style="font:400 32px/1.5 Archivo,sans-serif;color:#4a4740">Browsable at any point, with a sticky bar back to the booking in progress.</div>
+<div style="display:flex;flex-direction:column;gap:20px;font:400 28px/1.45 Archivo,sans-serif">
+<div>Category filters shared with the group pre-order screen.</div>
+<div>Dietary keys on every dish: V, VG, GF.</div>
+<div>Same card component in both contexts, quantity stepper added for groups.</div>
+</div>
+</div>
+<div style="width:1080px;height:800px;overflow:hidden;border:3px solid #1a1a1a;border-radius:12px;background:#fff">
+<div style="display:flex;align-items:center;justify-content:space-between;padding:20px 28px;border-bottom:3px solid #1a1a1a">
+<div style="display:flex;align-items:center;gap:14px"><div style="width:38px;height:38px;border:3px solid #1a1a1a;border-radius:50%"></div><div style="font:700 30px Caveat,cursive">Restaurant Name</div></div>
+<div style="display:flex;align-items:center;gap:24px;font:500 17px 'IBM Plex Mono',monospace"><span style="color:#8a857a">Home</span><span>Menu</span><span style="color:#8a857a">Contact</span><div style="background:#1a1a1a;color:#fff;border-radius:8px;padding:12px 18px">Book a Table</div></div>
+</div>
+<div style="padding:28px 32px">
+<div style="font:700 42px Caveat,cursive;margin-bottom:18px">Our menu</div>
+<div style="display:flex;gap:12px;border-bottom:3px solid #1a1a1a;padding-bottom:18px;margin-bottom:22px;font:500 17px 'IBM Plex Mono',monospace">
+<div style="background:#1a1a1a;color:#fff;border-radius:22px;padding:12px 22px">All</div>
+<div style="border:3px solid #1a1a1a;border-radius:22px;padding:12px 22px">Starters</div>
+<div style="border:3px solid #1a1a1a;border-radius:22px;padding:12px 22px">Mains</div>
+<div style="border:3px solid #1a1a1a;border-radius:22px;padding:12px 22px">Vegetarian</div>
+<div style="border:3px solid #1a1a1a;border-radius:22px;padding:12px 22px">Desserts</div>
+<div style="border:3px solid #1a1a1a;border-radius:22px;padding:12px 22px">Drinks</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+<div style="border:3px solid #1a1a1a;border-radius:10px;overflow:hidden">
+<div style="height:98px;border-bottom:3px solid #1a1a1a;background-image:repeating-linear-gradient(45deg,#eceae4 0 12px,#f7f6f3 12px 24px)"></div>
+<div style="padding:16px"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:600 22px Archivo,sans-serif">Warm Sourdough</div><div style="font:600 19px 'IBM Plex Mono',monospace">$9</div></div><div style="font:400 17px/1.4 Archivo,sans-serif;color:#6a655b;margin:8px 0 12px">Cultured butter, sea salt.</div><div style="font:500 14px 'IBM Plex Mono',monospace;border:3px solid #1a1a1a;border-radius:6px;padding:2px 8px;width:fit-content">V</div></div>
+</div>
+<div style="border:3px solid #1a1a1a;border-radius:10px;overflow:hidden">
+<div style="height:98px;border-bottom:3px solid #1a1a1a;background-image:repeating-linear-gradient(45deg,#eceae4 0 12px,#f7f6f3 12px 24px)"></div>
+<div style="padding:16px"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:600 22px Archivo,sans-serif">Salt &amp; Pepper Squid</div><div style="font:600 19px 'IBM Plex Mono',monospace">$18</div></div><div style="font:400 17px/1.4 Archivo,sans-serif;color:#6a655b;margin:8px 0 12px">Lemon aioli, chilli, herbs.</div><div style="font:500 14px 'IBM Plex Mono',monospace;border:3px solid #1a1a1a;border-radius:6px;padding:2px 8px;width:fit-content">GF</div></div>
+</div>
+<div style="border:3px solid #1a1a1a;border-radius:10px;overflow:hidden">
+<div style="height:98px;border-bottom:3px solid #1a1a1a;background-image:repeating-linear-gradient(45deg,#eceae4 0 12px,#f7f6f3 12px 24px)"></div>
+<div style="padding:16px"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:600 22px Archivo,sans-serif">Grilled Chicken</div><div style="font:600 19px 'IBM Plex Mono',monospace">$28</div></div><div style="font:400 17px/1.4 Archivo,sans-serif;color:#6a655b;margin:8px 0 12px">Herb-marinated, seasonal vegetables.</div><div style="font:500 14px 'IBM Plex Mono',monospace;border:3px solid #1a1a1a;border-radius:6px;padding:2px 8px;width:fit-content">GF</div></div>
+</div>
+<div style="border:3px solid #1a1a1a;border-radius:10px;overflow:hidden">
+<div style="height:98px;border-bottom:3px solid #1a1a1a;background-image:repeating-linear-gradient(45deg,#eceae4 0 12px,#f7f6f3 12px 24px)"></div>
+<div style="padding:16px"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:600 22px Archivo,sans-serif">Mushroom Risotto</div><div style="font:600 19px 'IBM Plex Mono',monospace">$26</div></div><div style="font:400 17px/1.4 Archivo,sans-serif;color:#6a655b;margin:8px 0 12px">Wild mushrooms, aged parmesan.</div><div style="font:500 14px 'IBM Plex Mono',monospace;border:3px solid #1a1a1a;border-radius:6px;padding:2px 8px;width:fit-content">V</div></div>
+</div>
+<div style="border:3px solid #1a1a1a;border-radius:10px;overflow:hidden">
+<div style="height:98px;border-bottom:3px solid #1a1a1a;background-image:repeating-linear-gradient(45deg,#eceae4 0 12px,#f7f6f3 12px 24px)"></div>
+<div style="padding:16px"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:600 22px Archivo,sans-serif">Sticky Date Pudding</div><div style="font:600 19px 'IBM Plex Mono',monospace">$14</div></div><div style="font:400 17px/1.4 Archivo,sans-serif;color:#6a655b;margin:8px 0 12px">Butterscotch, double cream.</div><div style="font:500 14px 'IBM Plex Mono',monospace;border:3px solid #1a1a1a;border-radius:6px;padding:2px 8px;width:fit-content">V</div></div>
+</div>
+<div style="border:3px solid #1a1a1a;border-radius:10px;overflow:hidden">
+<div style="height:98px;border-bottom:3px solid #1a1a1a;background-image:repeating-linear-gradient(45deg,#eceae4 0 12px,#f7f6f3 12px 24px)"></div>
+<div style="padding:16px"><div style="display:flex;justify-content:space-between;align-items:baseline"><div style="font:600 22px Archivo,sans-serif">House Negroni</div><div style="font:600 19px 'IBM Plex Mono',monospace">$19</div></div><div style="font:400 17px/1.4 Archivo,sans-serif;color:#6a655b;margin:8px 0 12px">Gin, bitter aperitif, vermouth.</div><div style="font:500 14px 'IBM Plex Mono',monospace;border:3px solid #1a1a1a;border-radius:6px;padding:2px 8px;width:fit-content">VG</div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section data-label="Mobile" data-screen-label="10" data-speaker-notes="Mobile is the majority of restaurant bookings. Same structure, one decision per screen, sticky CTA, and the group notice arrives as a bottom sheet." style="background:#e4e0d8;font-family:Archivo,Helvetica,sans-serif;color:#1a1a1a;padding:90px 100px 80px;display:flex;flex-direction:column;gap:44px">
+<div style="display:flex;justify-content:space-between;align-items:flex-end;gap:60px">
+<div style="display:flex;flex-direction:column;gap:18px">
+<div style="font:600 26px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#b4442a">MOBILE</div>
+<div style="font:700 64px/1.1 Archivo,sans-serif">One decision per screen on mobile</div>
+</div>
+<div style="font:400 28px/1.45 Archivo,sans-serif;color:#4a4740;max-width:620px">Sticky primary CTA, 44px minimum touch targets, and the group notice arrives as a bottom sheet.</div>
+</div>
+<div style="display:flex;gap:40px;justify-content:center">
+<div style="width:380px;border:3px solid #1a1a1a;border-radius:24px;background:#fff;overflow:hidden">
+<div style="display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:3px solid #1a1a1a"><div style="font:700 24px Caveat,cursive">Restaurant Name</div><div style="background:#1a1a1a;color:#fff;border-radius:8px;padding:10px 14px;font:500 15px 'IBM Plex Mono',monospace">Book</div></div>
+<div style="height:190px;background-image:repeating-linear-gradient(45deg,#eceae4 0 12px,#f7f6f3 12px 24px);border-bottom:3px solid #1a1a1a;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 20px;font:700 34px/1.15 Caveat,cursive">Good Food. Great Company. Your Table Awaits.</div>
+<div style="padding:18px">
+<div style="border:4px solid #1a1a1a;border-radius:12px;padding:18px;box-shadow:6px 6px 0 rgba(26,26,26,.14)">
+<div style="font:700 28px Caveat,cursive;margin-bottom:14px">Find a table</div>
+<div style="display:grid;gap:12px;font:400 18px Archivo,sans-serif">
+<div style="border:3px solid #1a1a1a;border-radius:8px;padding:16px">Sat 24 Oct</div>
+<div style="border:3px solid #1a1a1a;border-radius:8px;padding:16px">7:00 PM</div>
+<div style="border:3px solid #1a1a1a;border-radius:8px;padding:16px">4 Guests</div>
+<div style="background:#1a1a1a;color:#fff;border-radius:8px;padding:18px;text-align:center;font:500 17px 'IBM Plex Mono',monospace">Find a Table</div>
+</div>
+</div>
+<div style="height:14px;background:#e8e5df;border-radius:7px;margin:20px 0 10px"></div>
+<div style="height:14px;background:#e8e5df;border-radius:7px;width:66%"></div>
+</div>
+</div>
+<div style="width:380px;border:3px solid #1a1a1a;border-radius:24px;background:#fff;overflow:hidden">
+<div style="padding:18px">
+<div style="display:flex;gap:8px;margin-bottom:10px"><div style="flex:1;height:8px;background:#1a1a1a;border-radius:5px"></div><div style="flex:1;height:8px;background:#dedad1;border-radius:5px"></div><div style="flex:1;height:8px;background:#dedad1;border-radius:5px"></div></div>
+<div style="font:500 15px 'IBM Plex Mono',monospace;color:#8a857a;margin-bottom:18px">STEP 1 OF 3 · SELECT TABLE</div>
+<div style="font:700 28px Caveat,cursive;margin-bottom:10px">Guests</div>
+<div style="display:flex;align-items:center;justify-content:space-between;border:3px solid #1a1a1a;border-radius:12px;padding:16px 20px;font:500 22px 'IBM Plex Mono',monospace"><span style="width:42px;height:42px;border:3px solid #1a1a1a;border-radius:10px;display:flex;align-items:center;justify-content:center">–</span>4<span style="width:42px;height:42px;background:#1a1a1a;color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center">+</span></div>
+<div style="font:700 28px Caveat,cursive;margin:20px 0 10px">Date</div>
+<div style="display:flex;gap:10px;overflow:hidden;font:500 15px/1.4 'IBM Plex Mono',monospace;text-align:center">
+<div style="flex:none;border:3px solid #1a1a1a;border-radius:12px;padding:12px 16px">Fri<br>23</div>
+<div style="flex:none;background:#1a1a1a;color:#fff;border-radius:12px;padding:12px 16px">Sat<br>24</div>
+<div style="flex:none;border:3px solid #1a1a1a;border-radius:12px;padding:12px 16px">Sun<br>25</div>
+<div style="flex:none;border:3px solid #1a1a1a;border-radius:12px;padding:12px 16px">Mon<br>26</div>
+</div>
+<div style="font:700 28px Caveat,cursive;margin:20px 0 10px">Time</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;font:500 17px 'IBM Plex Mono',monospace;text-align:center">
+<div style="border:3px solid #e2ded6;background:#f6f5f3;color:#c2bdb2;border-radius:12px;padding:16px 0;text-decoration:line-through">5:00</div>
+<div style="border:3px solid #1a1a1a;border-radius:12px;padding:16px 0">5:30</div>
+<div style="border:3px solid #1a1a1a;border-radius:12px;padding:16px 0">6:00</div>
+<div style="border:3px solid #1a1a1a;border-radius:12px;padding:16px 0">6:30</div>
+<div style="background:#1a1a1a;color:#fff;border-radius:12px;padding:16px 0">7:00</div>
+<div style="border:3px solid #1a1a1a;border-radius:12px;padding:16px 0">7:30</div>
+</div>
+</div>
+<div style="border-top:3px solid #1a1a1a;padding:16px 18px;background:#f7f6f3"><div style="background:#1a1a1a;color:#fff;border-radius:10px;padding:18px;text-align:center;font:500 17px 'IBM Plex Mono',monospace">Continue</div></div>
+</div>
+<div style="width:380px;border:3px solid #1a1a1a;border-radius:24px;background:#fff;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end">
+<div style="padding:18px;opacity:.28">
+<div style="font:700 28px Caveat,cursive;margin-bottom:10px">Guests</div>
+<div style="border:3px solid #1a1a1a;border-radius:12px;padding:16px;text-align:center;font:500 22px 'IBM Plex Mono',monospace">14</div>
+<div style="height:14px;background:#e8e5df;border-radius:7px;margin:20px 0 10px"></div>
+<div style="height:14px;background:#e8e5df;border-radius:7px;width:60%"></div>
+</div>
+<div style="border-top:4px solid #1a1a1a;border-radius:22px 22px 0 0;padding:24px 20px;box-shadow:0 -8px 0 rgba(26,26,26,.1)">
+<div style="width:56px;height:6px;background:#d8d4cb;border-radius:4px;margin:0 auto 18px"></div>
+<div style="font:700 34px Caveat,cursive;margin-bottom:12px">Planning a group booking?</div>
+<div style="font:400 19px/1.5 Archivo,sans-serif;color:#4a4740">For bookings of more than 10 guests, we ask your group to pre-order your meals so our kitchen can prepare.</div>
+<div style="display:grid;gap:10px;margin-top:20px;font:500 16px 'IBM Plex Mono',monospace;text-align:center">
+<div style="background:#1a1a1a;color:#fff;border-radius:10px;padding:18px">Continue Group Booking</div>
+<div style="border:3px solid #1a1a1a;border-radius:10px;padding:18px">View Menu</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section data-label="Open questions" data-speaker-notes="Four decisions that change the build. Get answers before high-fidelity design starts." data-screen-label="11" style="background:#f0eee9;font-family:Archivo,Helvetica,sans-serif;color:#1a1a1a;padding:100px 110px 90px;display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-direction:column;gap:18px">
+<div style="font:600 26px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:#b4442a">NEXT</div>
+<div style="font:700 64px/1.1 Archivo,sans-serif">Open questions before high fidelity</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:44px 60px">
+<div style="display:flex;gap:26px;align-items:flex-start">
+<div style="font:600 48px 'IBM Plex Mono',monospace;color:#b4442a">01</div>
+<div style="display:flex;flex-direction:column;gap:10px"><div style="font:600 34px Archivo,sans-serif">Is a deposit required for groups?</div><div style="font:400 26px/1.45 Archivo,sans-serif;color:#4a4740">Payment would add a step between pre-order and confirmation.</div></div>
+</div>
+<div style="display:flex;gap:26px;align-items:flex-start">
+<div style="font:600 48px 'IBM Plex Mono',monospace;color:#b4442a">02</div>
+<div style="display:flex;flex-direction:column;gap:10px"><div style="font:600 34px Archivo,sans-serif">How firm is the pre-order?</div><div style="font:400 26px/1.45 Archivo,sans-serif;color:#4a4740">Editable until 48 hours out is assumed, not confirmed.</div></div>
+</div>
+<div style="display:flex;gap:26px;align-items:flex-start">
+<div style="font:600 48px 'IBM Plex Mono',monospace;color:#b4442a">03</div>
+<div style="display:flex;flex-direction:column;gap:10px"><div style="font:600 34px Archivo,sans-serif">Do guests need accounts?</div><div style="font:400 26px/1.45 Archivo,sans-serif;color:#4a4740">Currently guest-only, managed by booking reference.</div></div>
+</div>
+<div style="display:flex;gap:26px;align-items:flex-start">
+<div style="font:600 48px 'IBM Plex Mono',monospace;color:#b4442a">04</div>
+<div style="display:flex;flex-direction:column;gap:10px"><div style="font:600 34px Archivo,sans-serif">Waitlist when fully booked?</div><div style="font:400 26px/1.45 Archivo,sans-serif;color:#4a4740">Scoped out of v1; the empty state leaves room for it.</div></div>
+</div>
+</div>
+</section>
+
+</x-import>
+</x-dc>
+</body>
+</html>
