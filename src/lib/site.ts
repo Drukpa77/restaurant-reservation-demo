@@ -1,0 +1,21 @@
+export const site = {
+  name: "Demo-Web App",
+  wordmark: "DEMO-WEB APP",
+  city: "Canberra",
+  suburb: "Braddon",
+  street: "14 Lonsdale Street",
+  postcode: "Braddon ACT 2612",
+  addressShort: "14 Lonsdale Street, Braddon",
+  addressFull: "14 Lonsdale Street, Braddon ACT 2612",
+  directionsHint:
+    "On Lonsdale Street in Braddon, a few doors up from Elouera. Look for the green door.",
+  phoneDisplay: "(02) 6247 2280",
+  phoneHref: "tel:+61262472280",
+  email: "hello@demowebapp.com.au",
+  emailHref: "mailto:hello@demowebapp.com.au",
+  instagramUrl: "https://instagram.com/demowebapp",
+  instagramHandle: "@demowebapp",
+  mapsUrl: "https://maps.google.com/?q=14+Lonsdale+Street+Braddon+Canberra",
+  timezone: "Australia/Sydney",
+  chef: "Maya Reid",
+} as const;

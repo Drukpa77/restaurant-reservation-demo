@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Sheet } from "@/components/ui/Overlay";
 import { cn } from "@/lib/cn";
+import { site } from "@/lib/site";
 
 const NAV = [
   { href: "/", label: "Home" },
@@ -28,11 +29,11 @@ export function SiteHeader({ compact = false }: { compact?: boolean }) {
       <div className="flex items-center justify-between">
         <Link href="/" className="flex flex-col gap-0.5">
           <span className="font-display text-[19px] tracking-wordmark md:text-wordmark">
-            TERRA & VINE
+            {site.wordmark}
           </span>
           {!compact ? (
             <span className="hidden font-ui text-[9px] uppercase tracking-locale text-muted-subtle md:block">
-              Fitzroy
+              {site.city}
             </span>
           ) : null}
         </Link>
@@ -115,7 +116,7 @@ export function SiteFooter() {
     <footer className="bg-ink px-5 py-11 text-cream-72 md:px-gutter">
       <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
         <Link href="/" className="font-display text-[20px] tracking-wordmark text-cream">
-          TERRA & VINE
+          {site.wordmark}
         </Link>
         <div className="flex flex-wrap gap-x-[30px] gap-y-2 font-ui text-[15px] font-light">
           <Link href="/menu" className="hover:text-cream">Menu</Link>
@@ -123,9 +124,9 @@ export function SiteFooter() {
           <Link href="/book" className="hover:text-cream">Reservations</Link>
           <Link href="/reservations" className="hover:text-cream">Find booking</Link>
           <Link href="/vouchers" className="hover:text-cream">Gift vouchers</Link>
-                  <a href="https://instagram.com/terraandvine" className="hover:text-cream">
-                    Instagram
-                  </a>
+          <a href={site.instagramUrl} className="hover:text-cream">
+            Instagram
+          </a>
         </div>
         <p className="font-ui text-small">
           © 2026 · <Link href="/policy" className="hover:text-cream">Reservation policy</Link>

@@ -1,6 +1,8 @@
-/** Kitchen hours in Australia/Melbourne. Mondays are closed for bookings. */
+import { site } from "@/lib/site";
+
+/** Kitchen hours in Australia/Canberra (Sydney timezone). Mondays are closed for bookings. */
 export function melbourneNow() {
-  return new Date(new Date().toLocaleString("en-US", { timeZone: "Australia/Melbourne" }));
+  return new Date(new Date().toLocaleString("en-US", { timeZone: site.timezone }));
 }
 
 export function kitchenStatus() {

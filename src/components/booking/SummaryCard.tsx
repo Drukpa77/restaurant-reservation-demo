@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/Button";
 import { formatSidebarDate, formatTimeLabel, guestLabel } from "@/lib/format";
 import { cn } from "@/lib/cn";
+import { site } from "@/lib/site";
 
 export function SummaryCard({
   date,
@@ -52,9 +53,9 @@ export function SummaryCard({
       </p>
       <div className="my-[22px] h-px bg-hairline-12" />
       <p className="font-ui text-[16px] font-light leading-relaxed text-muted">
-        Terra & Vine
+        {site.name}
         <br />
-        12 Hartwell Lane, Fitzroy
+        {site.addressShort}
       </p>
       <div className="mt-4 flex flex-wrap gap-2">
         <Chip onClick={onEditDate}>Edit date</Chip>

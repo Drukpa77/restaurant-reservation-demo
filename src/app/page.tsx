@@ -9,6 +9,7 @@ import { OpenStatus } from "@/components/home/OpenStatus";
 import { photos } from "@/lib/photos";
 import { formatCardDate } from "@/lib/format";
 import { useBooking } from "@/lib/booking-store";
+import { site } from "@/lib/site";
 
 const dishes = [
   {
@@ -73,7 +74,7 @@ export default function HomePage() {
             <div className="mt-[22px] flex flex-wrap items-center gap-[30px] font-ui text-[15px] font-light text-cream-82">
               <OpenStatus />
               <span className="h-4 w-px bg-cream-30" />
-              <span>12 Hartwell Lane, Fitzroy</span>
+              <span>{site.addressShort}</span>
               <span className="h-4 w-px bg-cream-30" />
               <span className="flex items-center gap-2">
                 <span className="text-[15px] text-hero">★★★★★</span>
@@ -95,7 +96,7 @@ export default function HomePage() {
             <div className="hero-overlay-mobile pointer-events-none absolute inset-0" />
             <div className="absolute inset-x-0 bottom-0 p-[22px] text-cream">
               <p className="mb-2.5 font-ui text-[10px] uppercase tracking-locale text-hero">
-                Wood fire · Fitzroy
+                Wood fire · {site.city}
               </p>
               <h1 className="font-display text-display-m">An Evening Worth Reserving</h1>
               <p className="mt-3.5 flex items-center gap-2.5 font-ui text-[13px] font-light text-cream-86">
@@ -111,7 +112,7 @@ export default function HomePage() {
 
         <div className="px-5 md:hidden">
           <p className="mt-4 font-ui text-[15px] font-light leading-relaxed text-muted">
-            Twelve years on Hartwell Lane, cooking over coals.
+            Twelve years on Lonsdale Street, cooking over coals.
           </p>
           <div className="mt-3.5 flex gap-3">
             <Link href="/menu" className="flex-1">
@@ -142,7 +143,7 @@ export default function HomePage() {
             <p className="font-ui text-[12px] uppercase tracking-eyebrow text-terracotta">The dining room</p>
             <h2 className="font-display text-[52px] font-light leading-[1.14]">A table for every kind of evening</h2>
             <p className="font-ui text-[19px] font-light leading-[1.75] text-muted">
-              Twelve years in the same terrace on Hartwell Lane. The menu changes with the market — most of it cooked over coals — and the wine list leans to small growers from Victoria and the Mediterranean.
+              Twelve years in the same terrace on Lonsdale Street. The menu changes with the market — most of it cooked over coals — and the wine list leans to small growers from the Canberra District and the Mediterranean.
             </p>
             <div className="mt-2 flex gap-11">
               <Stat value="72" label="Seats" />
@@ -227,11 +228,11 @@ export default function HomePage() {
           <div>
             <p className="mb-5 font-ui text-[12px] uppercase tracking-eyebrow text-terracotta">Find us</p>
             <p className="font-ui text-[18px] font-light leading-[2.1] text-ink-alt">
-              12 Hartwell Lane
+              {site.street}
               <br />
-              Fitzroy VIC 3065
+              {site.postcode}
               <br />
-              (03) 9417 2280
+              {site.phoneDisplay}
             </p>
           </div>
           <div className="flex flex-col justify-between gap-[22px]">

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { formatHold } from "@/lib/format";
 import { useHoldRemaining } from "@/lib/booking-store";
 import { cn } from "@/lib/cn";
+import { site } from "@/lib/site";
 
 type Step = { id: string; label: string };
 
@@ -22,13 +23,13 @@ export function BookingHeader({
     <header className="border-b border-hairline-8 px-5 py-5 md:px-gutter">
       <div className="flex items-center justify-between gap-4">
         <Link href="/" className="font-display text-[22px] tracking-wordmark">
-          TERRA & VINE
+          {site.wordmark}
         </Link>
         <p className="hidden font-ui text-[12px] uppercase tracking-locale text-muted-subtle md:block">
           Reservations
         </p>
         <div className="hidden font-ui text-[15px] font-light text-muted md:block">
-          {right ?? "Need help? (03) 9417 2280"}
+          {right ?? `Need help? ${site.phoneDisplay}`}
         </div>
         <div className="font-ui text-[15px] font-light text-muted md:hidden">{right}</div>
       </div>

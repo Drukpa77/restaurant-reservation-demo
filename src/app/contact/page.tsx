@@ -2,6 +2,7 @@ import { SiteFooter, SiteHeader } from "@/components/layout/SiteChrome";
 import { PlaceholderImage } from "@/components/media/PlaceholderImage";
 import { Button } from "@/components/ui/Button";
 import { photos } from "@/lib/photos";
+import { site } from "@/lib/site";
 
 export default function ContactPage() {
   return (
@@ -12,10 +13,10 @@ export default function ContactPage() {
           <div className="flex flex-col gap-4">
             <p className="font-ui text-[12px] uppercase tracking-eyebrow text-terracotta">Visit us</p>
             <h1 className="font-display text-[42px] font-light leading-[1.12] md:text-h1">
-              12 Hartwell Lane, Fitzroy
+              {site.addressShort}
             </h1>
             <p className="font-ui text-[18px] font-light leading-relaxed text-muted">
-              Between Gertrude and Johnston Street, second laneway past the church. Look for the green door.
+              {site.directionsHint}
             </p>
           </div>
           <div className="grid gap-7 sm:grid-cols-2">
@@ -27,23 +28,23 @@ export default function ContactPage() {
               Fri – Sun · 12 – 11 PM
             </Info>
             <Info label="Contact">
-              (03) 9417 2280
+              {site.phoneDisplay}
               <br />
-              hello@terraandvine.com.au
+              {site.email}
               <br />
-              @terraandvine
+              {site.instagramHandle}
             </Info>
             <Info label="Parking">
               2-hour street parking after 6 PM
               <br />
-              Secure lot on Kerr Street, 4 min walk
+              Wilson car park on Elouera Street, 3 min walk
             </Info>
             <Info label="Public transport">
-              Tram 86 · Smith St stop 15
+              Light rail · Elouera Street
               <br />
-              Tram 11 · Brunswick St stop 16
+              Rapid bus R2 · Northbourne Ave
               <br />
-              Parliament Station, 12 min walk
+              Civic Interchange, 8 min walk
             </Info>
           </div>
           <div className="flex flex-col items-start justify-between gap-6 rounded-card-lg bg-surface p-[26px] md:flex-row md:items-center">
@@ -64,24 +65,20 @@ export default function ContactPage() {
         <div className="flex flex-col gap-5">
           <PlaceholderImage
             src={photos.map}
-            alt="Map of Fitzroy"
-            caption="Fitzroy location"
+            alt={`Map of ${site.suburb}, ${site.city}`}
+            caption={`${site.suburb} location`}
             className="h-[320px] rounded-card-lg md:h-[480px]"
             width={720}
             height={480}
           />
           <div className="grid gap-3 sm:grid-cols-3">
-            <Button
-              variant="secondary"
-              href="https://maps.google.com/?q=12+Hartwell+Lane+Fitzroy"
-              fullWidth
-            >
+            <Button variant="secondary" href={site.mapsUrl} fullWidth>
               Get directions
             </Button>
-            <Button variant="secondary" href="tel:+61394172280" fullWidth>
+            <Button variant="secondary" href={site.phoneHref} fullWidth>
               Call restaurant
             </Button>
-            <Button variant="secondary" href="mailto:hello@terraandvine.com.au" fullWidth>
+            <Button variant="secondary" href={site.emailHref} fullWidth>
               Email us
             </Button>
           </div>

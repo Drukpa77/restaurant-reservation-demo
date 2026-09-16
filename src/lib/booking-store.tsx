@@ -11,7 +11,7 @@ import {
 import { nextSaturday, toISODate } from "@/lib/format";
 import type { BookingDraft, GuestDetails, PreOrderLine, Reservation } from "@/lib/types";
 
-const STORAGE_KEY = "terra-vine-draft";
+const STORAGE_KEY = "demo-web-app-draft";
 const HOLD_MS = 10 * 60 * 1000;
 
 const emptyDetails: GuestDetails = {

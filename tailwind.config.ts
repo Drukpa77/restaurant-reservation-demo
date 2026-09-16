@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Terra & Vine design tokens.
+ * Demo-Web App design tokens.
  * Source: README.md → Design Tokens. Use these names in components — never raw hex.
  */
 const config: Config = {

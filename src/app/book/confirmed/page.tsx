@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { useToast } from "@/components/ui/Toast";
 import { formatCardDate, formatTimeLabel } from "@/lib/format";
 import { useBooking } from "@/lib/booking-store";
+import { site } from "@/lib/site";
 import type { Reservation } from "@/lib/types";
 
 export default function ConfirmedPage() {
@@ -73,18 +74,18 @@ function ConfirmedInner() {
   const dateParts = data.date.split("-");
   const timeParts = data.time.split(":");
   const reference = data.reference;
-  const shareText = `${reference} · Terra & Vine · ${formatCardDate(data.date)} ${formatTimeLabel(data.time)}`;
+  const shareText = `${reference} · ${site.name} · ${formatCardDate(data.date)} ${formatTimeLabel(data.time)}`;
 
   function calendar() {
     const start = `${dateParts[0]}${dateParts[1]}${dateParts[2]}T${timeParts[0]}${timeParts[1]}00`;
-    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent("Terra & Vine")}&dates=${start}/${start}`;
+    const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(site.name)}&dates=${start}/${start}`;
     window.open(url, "_blank");
   }
 
   async function share() {
     try {
       if (navigator.share) {
-        await navigator.share({ title: "Terra & Vine", text: shareText });
+        await navigator.share({ title: site.name, text: shareText });
         return;
       }
       await navigator.clipboard.writeText(shareText);
@@ -130,10 +131,10 @@ function ConfirmedInner() {
           </Button>
         </div>
         <div className="mt-[26px] flex justify-around font-ui text-[15px] text-muted md:justify-center md:gap-[30px]">
-          <a href="https://maps.google.com/?q=12+Hartwell+Lane+Fitzroy" className="flex items-center gap-2">
+          <a href={site.mapsUrl} className="flex items-center gap-2">
             <PinIcon size={16} /> Directions
           </a>
-          <a href="tel:+61394172280" className="flex items-center gap-2">
+          <a href={site.phoneHref} className="flex items-center gap-2">
             <PhoneIcon size={16} /> Call restaurant
           </a>
           <button type="button" className="flex items-center gap-2" onClick={share}>
@@ -151,7 +152,7 @@ function ConfirmedInner() {
               window.location.href = "/";
             }}
           >
-            Back to Terra & Vine
+            Back to {site.name}
           </Button>
         </div>
       </div>

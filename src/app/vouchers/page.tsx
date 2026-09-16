@@ -1,5 +1,6 @@
 import { SiteFooter, SiteHeader } from "@/components/layout/SiteChrome";
 import { Button } from "@/components/ui/Button";
+import { site } from "@/lib/site";
 
 export default function VouchersPage() {
   return (
@@ -20,11 +21,11 @@ export default function VouchersPage() {
           ))}
         </div>
         <div className="mt-10 flex flex-wrap gap-4">
-          <Button href="mailto:hello@terraandvine.com.au?subject=Gift%20voucher">
+          <Button href={`${site.emailHref}?subject=Gift%20voucher`}>
             Email to purchase
           </Button>
-          <Button variant="secondary" href="tel:+61394172280">
-            Call (03) 9417 2280
+          <Button variant="secondary" href={site.phoneHref}>
+            Call {site.phoneDisplay}
           </Button>
         </div>
       </article>

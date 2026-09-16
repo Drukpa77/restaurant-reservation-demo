@@ -12,6 +12,7 @@ import { Select } from "@/components/ui/Select";
 import { formatCardDate, formatTimeLabel, guestLabel } from "@/lib/format";
 import { useBooking } from "@/lib/booking-store";
 import { isDetailsComplete, validateEmail, validateName, validatePhone } from "@/lib/validation";
+import { site } from "@/lib/site";
 
 const OCCASIONS = [
   { value: "none", label: "None" },
@@ -128,7 +129,7 @@ export default function DetailsPage() {
           >
             Try again
           </Button>
-          <Button variant="text-ink" href="tel:+61394172280">
+          <Button variant="text-ink" href={site.phoneHref}>
             Call the restaurant
           </Button>
         </div>
